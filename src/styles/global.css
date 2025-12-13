@@ -1,3 +1,19 @@
 @import "tailwindcss";
 /* Hace que dark: funcione por clase .dark (en vez de por prefers-color-scheme) */
 @custom-variant dark (&:where(.dark, .dark *));
+
+/*Fonts*/
+
+@import "@fontsource/inter/latin.css";
+@import "@fontsource/cinzel/latin.css";
+
+:root {
+  --font-sans:
+    "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans",
+    "Apple Color Emoji", "Segoe UI Emoji";
+  --font-display: "Cinzel", ui-serif, Georgia, serif;
+}
+
+html {
+  font-family: var(--font-sans);
+}

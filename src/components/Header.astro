@@ -1,0 +1,121 @@
+---
+import { site } from "../data/site";
+---
+
+<header
+  class="sticky top-0 z-50 border-b border-black/10 bg-amber-50/80 backdrop-blur dark:border-white/10 dark:bg-zinc-950/70"
+>
+  <div class="mx-auto max-w-5xl px-4">
+    <div class="flex h-16 items-center justify-between gap-3">
+      <a href="#inicio" class="flex items-center gap-3">
+        <img
+          src={site.logo}
+          alt="Logo Los Lingotes"
+          class="h-10 w-10 rounded-full object-cover ring-1 ring-black/10 dark:ring-white/10"
+        />
+        <div class="leading-tight">
+          <div class="font-semibold">{site.name}</div>
+          <div class="text-xs text-zinc-600 dark:text-zinc-400">{site.city}</div>
+        </div>
+      </a>
+
+      <nav class="hidden items-center gap-1 md:flex">
+        <a
+          class="rounded-xl px-3 py-2 text-sm hover:bg-black/5 dark:hover:bg-white/10"
+          href="#actuaciones">Actuaciones</a
+        >
+        <a
+          class="rounded-xl px-3 py-2 text-sm hover:bg-black/5 dark:hover:bg-white/10"
+          href="#galeria">Galería</a
+        >
+        <a
+          class="rounded-xl px-3 py-2 text-sm hover:bg-black/5 dark:hover:bg-white/10"
+          href="#videos">Vídeos</a
+        >
+        <a
+          class="rounded-xl px-3 py-2 text-sm hover:bg-black/5 dark:hover:bg-white/10"
+          href="#contacto">Contacto</a
+        >
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <button
+          id="themeToggle"
+          class="rounded-xl border border-black/10 px-3 py-2 text-sm hover:bg-black/5 dark:border-white/10 dark:hover:bg-white/10"
+          type="button"
+        >
+          <span id="themeIcon" aria-hidden="true">�</span><span class="ml-2 hidden sm:inline"
+            >Tema</span
+          >
+        </button>
+
+        <button
+          id="menuBtn"
+          class="rounded-xl border border-black/10 px-3 py-2 text-sm hover:bg-black/5 dark:border-white/10 dark:hover:bg-white/10 md:hidden"
+          type="button"
+          aria-controls="mobileMenu"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+      </div>
+    </div>
+
+    <div id="mobileMenu" class="hidden pb-3 md:hidden">
+      <nav class="grid gap-1">
+        <a
+          class="rounded-xl px-3 py-2 text-sm hover:bg-black/5 dark:hover:bg-white/10"
+          href="#actuaciones">Actuaciones</a
+        >
+        <a
+          class="rounded-xl px-3 py-2 text-sm hover:bg-black/5 dark:hover:bg-white/10"
+          href="#galeria">Galería</a
+        >
+        <a
+          class="rounded-xl px-3 py-2 text-sm hover:bg-black/5 dark:hover:bg-white/10"
+          href="#videos">Vídeos</a
+        >
+        <a
+          class="rounded-xl px-3 py-2 text-sm hover:bg-black/5 dark:hover:bg-white/10"
+          href="#contacto">Contacto</a
+        >
+      </nav>
+    </div>
+  </div>
+
+  <script is:inline>
+    // Theme toggle
+    (() => {
+      const btn = document.getElementById("themeToggle");
+      const icon = document.getElementById("themeIcon");
+      const setIcon = () => {
+        const isDark = document.documentElement.classList.contains("dark");
+        if (icon) icon.textContent = isDark ? " ☀️" : "☀️";
+      };
+      setIcon();
+      btn?.addEventListener("click", () => {
+        const isDark = document.documentElement.classList.toggle("dark");
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+        setIcon();
+      });
+    })();
+
+    // Mobile menu
+    (() => {
+      const btn = document.getElementById("menuBtn");
+      const menu = document.getElementById("mobileMenu");
+      const close = () => {
+        if (!btn || !menu) return;
+        menu.classList.add("hidden");
+        btn.setAttribute("aria-expanded", "false");
+      };
+      btn?.addEventListener("click", () => {
+        if (!btn || !menu) return;
+        const hidden = menu.classList.toggle("hidden");
+        btn.setAttribute("aria-expanded", String(!hidden));
+      });
+      menu?.querySelectorAll("a").forEach((a) => a.addEventListener("click", close));
+      document.addEventListener("keydown", (e) => e.key === "Escape" && close());
+    })();
+  </script>
+</header>

@@ -1,0 +1,52 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-black/10 bg-amber-100/60 dark:border-white/10 dark:bg-zinc-950">
+  <div class="mx-auto max-w-5xl px-4 py-10">
+    <div class="grid gap-8 sm:grid-cols-2">
+      <!-- Identidad -->
+      <div>
+        <p class="text-lg font-semibold" style="font-family: var(--font-display);">
+          Comparsa Los Lingotes
+        </p>
+        <p class="mt-2 text-sm text-zinc-700 dark:text-zinc-400">Carnaval de Talavera la Real.</p>
+        <p class="mt-1 text-sm text-zinc-700 dark:text-zinc-400">
+          Dorado por fuera, carnaval por dentro.
+        </p>
+      </div>
+
+      <!-- Contacto -->
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-wide">Contacto</p>
+
+        <div class="mt-3 flex flex-col gap-3">
+          <!-- Facebook -->
+          <a
+            href="https://www.facebook.com/loslingotes"
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center gap-3 rounded-xl border border-black/10 bg-white/60 px-4 py-3 text-sm
+                   hover:bg-white dark:border-white/10 dark:bg-zinc-900/40 dark:hover:bg-zinc-900"
+          >
+            <span
+              class="flex h-9 w-9 items-center justify-center rounded-full bg-blue-600 text-white"
+            >
+              f
+            </span>
+            <span>Facebook · Los Lingotes</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Línea inferior -->
+    <div
+      class="mt-10 flex flex-col items-center justify-between gap-3 border-t border-black/10 pt-6 text-xs
+             text-zinc-600 dark:border-white/10 dark:text-zinc-400 sm:flex-row"
+    >
+      <span>© {year} Comparsa Los Lingotes</span>
+      <span>Talavera la Real · Carnaval</span>
+    </div>
+  </div>
+</footer>

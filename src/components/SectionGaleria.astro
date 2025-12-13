@@ -1,0 +1,29 @@
+---
+import { galeria } from "../data/galeria";
+---
+
+<section id="galeria" class="mx-auto max-w-5xl px-4 py-12">
+  <h2 class="text-2xl font-semibold" style="font-family: var(--font-display);">Galería</h2>
+  <p class="mt-2 text-zinc-700 dark:text-zinc-300">Fotos de actuaciones, ensayos y carnaval.</p>
+
+  <!-- Móvil: carrusel horizontal con snap / Desktop: grid -->
+  <div class="mt-6 -mx-4 px-4 md:mx-0 md:px-0">
+    <div
+      class="flex gap-4 overflow-x-auto pb-2 snap-x snap-mandatory md:grid md:grid-cols-3 md:overflow-visible"
+    >
+      {
+        galeria.map((img) => (
+          <figure class="min-w-[80%] snap-center md:min-w-0">
+            <img
+              src={img.src}
+              alt={img.alt}
+              class="h-64 w-full rounded-2xl object-cover ring-1 ring-black/10 dark:ring-white/10"
+              loading="lazy"
+            />
+            <figcaption class="mt-2 text-xs text-zinc-600 dark:text-zinc-400">{img.alt}</figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </div>
+</section>

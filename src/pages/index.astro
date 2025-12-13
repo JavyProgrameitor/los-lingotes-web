@@ -1,9 +1,10 @@
 ---
 import "../styles/global.css";
-
-const title = "Comparsa Los Lingotes | Talavera la Real";
-const description =
-  "Comparsa de Carnaval Los Lingotes de Talavera la Real. Actuaciones, historia y carnaval.";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import SectionGaleria from "../components/SectionGaleria.astro";
+import SectionVideos from "../components/SectionVideos.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <!doctype html>
@@ -11,10 +12,34 @@ const description =
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
-    <meta name="description" content={description} />
+    <title>Comparsa Los Lingotes | Talavera la Real</title>
+    <meta
+      name="description"
+      content="Comparsa de Carnaval Los Lingotes de Talavera la Real. Actuaciones, historia y carnaval."
+    />
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Comparsa Los Lingotes" />
+    <meta property="og:title" content="Comparsa Los Lingotes | Talavera la Real" />
+    <meta
+      property="og:description"
+      content="Comparsa de Carnaval Los Lingotes de Talavera la Real. Actuaciones, galería y vídeos."
+    />
+    <meta property="og:url" content="https://los-lingotes-web.pages.dev" />
+    <meta property="og:image" content="https://los-lingotes-web.pages.dev" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="es_ES" />
 
-    <!-- Tema: evita flash -->
+    <!-- Twitter (por compatibilidad) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Comparsa Los Lingotes | Talavera la Real" />
+    <meta
+      name="twitter:description"
+      content="Comparsa de Carnaval Los Lingotes de Talavera la Real. Actuaciones, galería y vídeos."
+    />
+    <meta name="twitter:image" content="https://los-lingotes-web.pages.dev" />
+
     <script is:inline>
       (() => {
         const stored = localStorage.getItem("theme");
@@ -25,310 +50,12 @@ const description =
     </script>
   </head>
 
-  <body class="bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
-    <!-- Header -->
-    <header
-      class="sticky top-0 z-50 border-b border-zinc-200/70 bg-white/80 backdrop-blur dark:border-zinc-800/70 dark:bg-zinc-950/70"
-    >
-      <div class="mx-auto max-w-5xl px-4">
-        <div class="flex h-16 items-center justify-between gap-3">
-          <!-- Brand -->
-          <a href="/" class="flex items-center gap-3">
-            <img
-              src="/lingotes01.jpg"
-              alt="Logo Los Lingotes"
-              class="h-10 w-10 rounded-full object-cover ring-1 ring-zinc-200 dark:ring-zinc-800"
-              loading="eager"
-              decoding="async"
-            />
-            <div class="leading-tight">
-              <div class="font-semibold">Los Lingotes</div>
-              <div class="text-xs text-zinc-600 dark:text-zinc-400">Talavera la Real</div>
-            </div>
-          </a>
-
-          <!-- Desktop nav -->
-          <nav class="hidden items-center gap-1 md:flex">
-            <a
-              class="rounded-xl px-3 py-2 text-sm hover:bg-zinc-100 dark:hover:bg-zinc-900"
-              href="#inicio">Inicio</a
-            >
-            <a
-              class="rounded-xl px-3 py-2 text-sm hover:bg-zinc-100 dark:hover:bg-zinc-900"
-              href="#actuaciones">Actuaciones</a
-            >
-            <a
-              class="rounded-xl px-3 py-2 text-sm hover:bg-zinc-100 dark:hover:bg-zinc-900"
-              href="#galeria">Galería</a
-            >
-            <a
-              class="rounded-xl px-3 py-2 text-sm hover:bg-zinc-100 dark:hover:bg-zinc-900"
-              href="#contacto">Contacto</a
-            >
-          </nav>
-
-          <!-- Actions -->
-          <div class="flex items-center gap-2">
-            <!-- Theme toggle -->
-            <button
-              id="themeToggle"
-              type="button"
-              class="inline-flex items-center justify-center rounded-xl border border-zinc-200 px-3 py-2 text-sm hover:bg-zinc-50 dark:border-zinc-800 dark:hover:bg-zinc-900"
-              aria-label="Cambiar tema"
-              title="Cambiar tema"
-            >
-              <span id="themeIcon" aria-hidden="true">🌓</span>
-              <span class="ml-2 hidden sm:inline">Tema</span>
-            </button>
-
-            <!-- Mobile menu button -->
-            <button
-              id="menuBtn"
-              type="button"
-              class="inline-flex items-center justify-center rounded-xl border border-zinc-200 px-3 py-2 text-sm hover:bg-zinc-50 dark:border-zinc-800 dark:hover:bg-zinc-900 md:hidden"
-              aria-label="Abrir menú"
-              aria-controls="mobileMenu"
-              aria-expanded="false"
-            >
-              ☰
-            </button>
-          </div>
-        </div>
-
-        <!-- Mobile nav -->
-        <div id="mobileMenu" class="hidden pb-3 md:hidden">
-          <nav class="grid gap-1">
-            <a
-              class="rounded-xl px-3 py-2 text-sm hover:bg-zinc-100 dark:hover:bg-zinc-900"
-              href="#inicio">Inicio</a
-            >
-            <a
-              class="rounded-xl px-3 py-2 text-sm hover:bg-zinc-100 dark:hover:bg-zinc-900"
-              href="#actuaciones">Actuaciones</a
-            >
-            <a
-              class="rounded-xl px-3 py-2 text-sm hover:bg-zinc-100 dark:hover:bg-zinc-900"
-              href="#galeria">Galería</a
-            >
-            <a
-              class="rounded-xl px-3 py-2 text-sm hover:bg-zinc-100 dark:hover:bg-zinc-900"
-              href="#contacto">Contacto</a
-            >
-          </nav>
-        </div>
-      </div>
-
-      <script is:inline>
-        // Theme toggle
-        (() => {
-          const btn = document.getElementById("themeToggle");
-          const icon = document.getElementById("themeIcon");
-
-          const setIcon = () => {
-            const isDark = document.documentElement.classList.contains("dark");
-            if (icon) icon.textContent = isDark ? "🌙" : "☀️";
-          };
-
-          setIcon();
-
-          btn?.addEventListener("click", () => {
-            const isDark = document.documentElement.classList.toggle("dark");
-            localStorage.setItem("theme", isDark ? "dark" : "light");
-            setIcon();
-          });
-        })();
-
-        // Mobile menu
-        (() => {
-          const btn = document.getElementById("menuBtn");
-          const menu = document.getElementById("mobileMenu");
-
-          const closeMenu = () => {
-            if (!menu || !btn) return;
-            menu.classList.add("hidden");
-            btn.setAttribute("aria-expanded", "false");
-          };
-
-          btn?.addEventListener("click", () => {
-            if (!menu || !btn) return;
-            const isHidden = menu.classList.toggle("hidden");
-            btn.setAttribute("aria-expanded", String(!isHidden));
-          });
-
-          // Cierra al clicar un enlace
-          menu?.querySelectorAll("a").forEach((a) => {
-            a.addEventListener("click", closeMenu);
-          });
-
-          // Cierra con Escape
-          document.addEventListener("keydown", (e) => {
-            if (e.key === "Escape") closeMenu();
-          });
-        })();
-      </script>
-    </header>
-
-    <!-- HERO -->
-    <main id="inicio">
-      <section class="relative overflow-hidden">
-        <!-- Fondo negro + “oro” -->
-        <div class="absolute inset-0 -z-10">
-          <!-- base -->
-          <div class="absolute inset-0 bg-zinc-950"></div>
-
-          <!-- bandas tipo lingote -->
-          <div
-            class="absolute -left-40 top-[-10rem] h-[28rem] w-[60rem] rotate-[-18deg] rounded-[999px]
-                   bg-gradient-to-r from-amber-200/20 via-amber-400/20 to-yellow-200/10 blur-2xl"
-          >
-          </div>
-          <div
-            class="absolute -right-40 bottom-[-12rem] h-[28rem] w-[60rem] rotate-[12deg] rounded-[999px]
-                   bg-gradient-to-r from-yellow-200/10 via-amber-400/20 to-amber-200/10 blur-2xl"
-          >
-          </div>
-
-          <!-- brillo puntual -->
-          <div
-            class="absolute left-1/2 top-24 h-40 w-40 -translate-x-1/2 rounded-full
-                   bg-amber-300/20 blur-3xl"
-          >
-          </div>
-
-          <!-- grid sutil -->
-          <div
-            class="absolute inset-0 opacity-[0.08]"
-            style="
-              background-image:
-                linear-gradient(to right, rgba(255,255,255,0.12) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255,255,255,0.12) 1px, transparent 1px);
-              background-size: 64px 64px;
-            "
-          >
-          </div>
-
-          <!-- viñeta -->
-          <div
-            class="absolute inset-0 bg-gradient-to-b from-transparent via-zinc-950/50 to-zinc-950"
-          >
-          </div>
-        </div>
-
-        <div class="mx-auto max-w-5xl px-4 py-14 sm:py-20">
-          <div class="grid items-center gap-10 md:grid-cols-2">
-            <!-- Texto -->
-            <div>
-              <p
-                class="inline-flex items-center gap-2 rounded-full border border-amber-300/30 bg-amber-300/10 px-3 py-1 text-xs font-medium text-amber-200"
-              >
-                ✨ Carnaval • Talavera la Real
-              </p>
-
-              <h1 class="mt-5 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
-                Comparsa <span class="text-amber-300">Los Lingotes</span>
-              </h1>
-
-              <p class="mt-5 text-base leading-relaxed text-zinc-200">
-                Música, letras y calle. Vive con nosotros el carnaval de Talavera la Real y la
-                provincia de Badajoz.
-              </p>
-
-              <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-                <a
-                  href="#actuaciones"
-                  class="inline-flex items-center justify-center rounded-2xl bg-amber-300 px-5 py-3 text-sm font-semibold text-zinc-950
-                         shadow-lg shadow-amber-300/20 hover:bg-amber-200"
-                >
-                  Ver actuaciones
-                </a>
-
-                <a
-                  href="#contacto"
-                  class="inline-flex items-center justify-center rounded-2xl border border-zinc-700 bg-zinc-900/40 px-5 py-3 text-sm font-semibold text-white
-                         hover:bg-zinc-900"
-                >
-                  Contacto
-                </a>
-              </div>
-
-              <div class="mt-8 flex flex-wrap gap-2 text-xs text-zinc-300/90">
-                <span class="rounded-full border border-zinc-700 bg-zinc-900/40 px-3 py-1"
-                  >Repertorio</span
-                >
-                <span class="rounded-full border border-zinc-700 bg-zinc-900/40 px-3 py-1"
-                  >Galería</span
-                >
-                <span class="rounded-full border border-zinc-700 bg-zinc-900/40 px-3 py-1"
-                  >Historia</span
-                >
-              </div>
-            </div>
-
-            <!-- Logo / tarjeta -->
-            <div class="relative">
-              <div
-                class="relative mx-auto max-w-sm rounded-[2rem] border border-amber-300/20 bg-zinc-900/40 p-6
-                       shadow-2xl shadow-black/40 backdrop-blur"
-              >
-                <div
-                  class="absolute -inset-px rounded-[2rem] bg-gradient-to-br from-amber-300/20 via-transparent to-yellow-200/10"
-                >
-                </div>
-
-                <div class="relative">
-                  <div class="flex items-center justify-between">
-                    <p class="text-xs font-semibold text-amber-200">Edición</p>
-                    <p class="text-xs text-zinc-300">2024</p>
-                  </div>
-
-                  <div class="mt-5 flex items-center justify-center">
-                    <img
-                      src="/lingotes01.jpg"
-                      alt="Logo Los Lingotes 2024"
-                      class="h-56 w-56 rounded-full object-cover ring-2 ring-amber-300/40 shadow-lg shadow-amber-300/10"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </div>
-
-                  <p class="mt-6 text-center text-sm text-zinc-200">
-                    “Dorado por fuera, carnaval por dentro.”
-                  </p>
-                </div>
-              </div>
-
-              <!-- destello -->
-              <div
-                class="pointer-events-none absolute -left-8 -top-8 h-24 w-24 rounded-full bg-amber-300/20 blur-2xl"
-              >
-              </div>
-              <div
-                class="pointer-events-none absolute -right-10 -bottom-10 h-28 w-28 rounded-full bg-yellow-200/10 blur-2xl"
-              >
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Contenido -->
-      <section class="mx-auto max-w-5xl px-4 py-12">
-        <!-- Secciones placeholder -->
-        <section id="actuaciones" class="mt-6">
-          <h2 class="text-2xl font-semibold">Actuaciones</h2>
-          <p class="mt-3 text-zinc-700 dark:text-zinc-300">Próximamente…</p>
-        </section>
-
-        <section id="galeria" class="mt-16">
-          <h2 class="text-2xl font-semibold">Galería</h2>
-          <p class="mt-3 text-zinc-700 dark:text-zinc-300">Próximamente…</p>
-        </section>
-
-        <section id="contacto" class="mt-16">
-          <h2 class="text-2xl font-semibold">Contacto</h2>
-          <p class="mt-3 text-zinc-700 dark:text-zinc-300">Próximamente…</p>
-        </section>
-      </section>
-    </main>
+  <body class="bg-amber-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
+    <Header />
+    <Hero />
+    <SectionGaleria />
+    <SectionVideos />
+    <Footer />
+    <!-- Luego metemos Actuaciones y Contacto igual -->
   </body>
 </html>
