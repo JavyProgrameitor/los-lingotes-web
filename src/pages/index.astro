@@ -5,6 +5,9 @@ import Hero from "../components/Hero.astro";
 import SectionGaleria from "../components/SectionGaleria.astro";
 import SectionVideos from "../components/SectionVideos.astro";
 import Footer from "../components/Footer.astro";
+
+const SITE_URL = "https://loslingotes.es";
+const OG_IMAGE = `${SITE_URL}/og.jpg`;
 ---
 
 <!doctype html>
@@ -12,11 +15,18 @@ import Footer from "../components/Footer.astro";
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Comparsa Los Lingotes | Talavera la Real</title>
     <meta
       name="description"
       content="Comparsa de Carnaval Los Lingotes de Talavera la Real. Actuaciones, historia y carnaval."
     />
+
+    <link rel="canonical" href={`${SITE_URL}/`} />
+
+    <!-- Tema del navegador (móvil) -->
+    <meta name="theme-color" content="#0a0a0a" />
+
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Comparsa Los Lingotes" />
@@ -25,12 +35,13 @@ import Footer from "../components/Footer.astro";
       property="og:description"
       content="Comparsa de Carnaval Los Lingotes de Talavera la Real. Actuaciones, galería y vídeos."
     />
-    <meta property="og:url" content="https://los-lingotes-web.pages.dev/" />
-    <meta property="og:image" content="https://los-lingotes-web.pages.dev/og.jpg" />
-    <meta property="og:image:secure_url" content="https://los-lingotes-web.pages.dev/og.jpg" />
+    <meta property="og:url" content={`${SITE_URL}/`} />
+    <meta property="og:image" content={OG_IMAGE} />
+    <meta property="og:image:secure_url" content={OG_IMAGE} />
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Logo Los Lingotes" />
     <meta property="og:locale" content="es_ES" />
 
     <!-- Twitter (por compatibilidad) -->
@@ -40,8 +51,9 @@ import Footer from "../components/Footer.astro";
       name="twitter:description"
       content="Comparsa de Carnaval Los Lingotes de Talavera la Real. Actuaciones, galería y vídeos."
     />
-    <meta name="twitter:image" content="https://los-lingotes-web.pages.dev/og.jpg" />
+    <meta name="twitter:image" content={OG_IMAGE} />
 
+    <!-- Tema: evita flash -->
     <script is:inline>
       (() => {
         const stored = localStorage.getItem("theme");
@@ -58,6 +70,5 @@ import Footer from "../components/Footer.astro";
     <SectionGaleria />
     <SectionVideos />
     <Footer />
-    <!-- Luego metemos Actuaciones y Contacto igual -->
   </body>
 </html>
