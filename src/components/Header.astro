@@ -7,11 +7,13 @@ import { site } from "../data/site";
 >
   <div class="mx-auto max-w-5xl px-4">
     <div class="flex h-16 items-center justify-between gap-3">
-      <a href="#inicio" class="flex items-center gap-3">
+      <a href="#inicio" class="flex items-center gap-3" aria-label="Ir al inicio">
         <img
           src={site.logo}
           alt="Logo Los Lingotes"
           class="h-10 w-10 rounded-full object-cover ring-1 ring-black/10 dark:ring-white/10"
+          loading="eager"
+          decoding="async"
         />
         <div class="leading-tight">
           <div class="font-semibold">{site.name}</div>
@@ -19,11 +21,8 @@ import { site } from "../data/site";
         </div>
       </a>
 
-      <nav class="hidden items-center gap-1 md:flex">
-        <a
-          class="rounded-xl px-3 py-2 text-sm hover:bg-black/5 dark:hover:bg-white/10"
-          href="#actuaciones">Actuaciones</a
-        >
+      <!-- Desktop nav -->
+      <nav class="hidden items-center gap-1 md:flex" aria-label="Navegación principal">
         <a
           class="rounded-xl px-3 py-2 text-sm hover:bg-black/5 dark:hover:bg-white/10"
           href="#galeria">Galería</a
@@ -32,21 +31,34 @@ import { site } from "../data/site";
           class="rounded-xl px-3 py-2 text-sm hover:bg-black/5 dark:hover:bg-white/10"
           href="#videos">Vídeos</a
         >
+
+        <!-- Instagram (externo) -->
+        <a
+          class="rounded-xl px-3 py-2 text-sm hover:bg-black/5 dark:hover:bg-white/10"
+          href="https://www.instagram.com/comparsalingotes/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Abrir Instagram de la comparsa (se abre en otra pestaña)">Instagram</a
+        >
+
+        <!-- Contacto baja al footer -->
         <a
           class="rounded-xl px-3 py-2 text-sm hover:bg-black/5 dark:hover:bg-white/10"
           href="#contacto">Contacto</a
         >
       </nav>
 
+      <!-- Actions -->
       <div class="flex items-center gap-2">
         <button
           id="themeToggle"
           class="rounded-xl border border-black/10 px-3 py-2 text-sm hover:bg-black/5 dark:border-white/10 dark:hover:bg-white/10"
           type="button"
+          aria-label="Cambiar tema"
+          title="Cambiar tema"
         >
-          <span id="themeIcon" aria-hidden="true"></span><span class="ml-2 hidden sm:inline"
-            >Tema</span
-          >
+          <span id="themeIcon" aria-hidden="true"></span>
+          <span class="ml-2 hidden sm:inline">Tema</span>
         </button>
 
         <button
@@ -55,18 +67,17 @@ import { site } from "../data/site";
           type="button"
           aria-controls="mobileMenu"
           aria-expanded="false"
+          aria-label="Abrir menú"
+          title="Abrir menú"
         >
           ☰
         </button>
       </div>
     </div>
 
+    <!-- Mobile nav -->
     <div id="mobileMenu" class="hidden pb-3 md:hidden">
-      <nav class="grid gap-1">
-        <a
-          class="rounded-xl px-3 py-2 text-sm hover:bg-black/5 dark:hover:bg-white/10"
-          href="#actuaciones">Actuaciones</a
-        >
+      <nav class="grid gap-1" aria-label="Menú móvil">
         <a
           class="rounded-xl px-3 py-2 text-sm hover:bg-black/5 dark:hover:bg-white/10"
           href="#galeria">Galería</a
@@ -75,6 +86,15 @@ import { site } from "../data/site";
           class="rounded-xl px-3 py-2 text-sm hover:bg-black/5 dark:hover:bg-white/10"
           href="#videos">Vídeos</a
         >
+
+        <!-- Instagram (externo) -->
+        <a
+          class="rounded-xl px-3 py-2 text-sm hover:bg-black/5 dark:hover:bg-white/10"
+          href="https://www.instagram.com/comparsalingotes/"
+          target="_blank"
+          rel="noopener noreferrer">Instagram</a
+        >
+
         <a
           class="rounded-xl px-3 py-2 text-sm hover:bg-black/5 dark:hover:bg-white/10"
           href="#contacto">Contacto</a
@@ -90,7 +110,7 @@ import { site } from "../data/site";
       const icon = document.getElementById("themeIcon");
       const setIcon = () => {
         const isDark = document.documentElement.classList.contains("dark");
-        if (icon) icon.textContent = isDark ? " 🌛 " : "☀️";
+        if (icon) icon.textContent = isDark ? "🌛" : "☀️";
       };
       setIcon();
       btn?.addEventListener("click", () => {

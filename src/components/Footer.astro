@@ -2,7 +2,10 @@
 const year = new Date().getFullYear();
 ---
 
-<footer class="border-t border-black/10 bg-amber-100/60 dark:border-white/10 dark:bg-zinc-950">
+<footer
+  id="contacto"
+  class="border-t border-black/10 bg-amber-100/60 dark:border-white/10 dark:bg-zinc-950"
+>
   <div class="mx-auto max-w-5xl px-4 py-10">
     <div class="grid gap-8 sm:grid-cols-2">
       <!-- Identidad -->
@@ -10,31 +13,47 @@ const year = new Date().getFullYear();
         <p class="text-lg font-semibold" style="font-family: var(--font-display);">
           Comparsa Los Lingotes
         </p>
-        <p class="mt-2 text-sm text-zinc-700 dark:text-zinc-400">Carnaval de Talavera la Real.</p>
+        <p class="mt-2 text-sm text-zinc-700 dark:text-zinc-400">
+          Talavera la Real (Badajoz) · Carnaval
+        </p>
         <p class="mt-1 text-sm text-zinc-700 dark:text-zinc-400">
-          Dorado por fuera, carnaval por dentro.
+          Sigue nuestras redes para ver fotos y actuaciones.
         </p>
       </div>
 
-      <!-- Contacto -->
+      <!-- Contacto / Redes -->
       <div>
-        <p class="text-sm font-semibold uppercase tracking-wide">Contacto</p>
+        <p class="text-sm font-semibold uppercase tracking-wide">Contacto y redes</p>
 
         <div class="mt-3 flex flex-col gap-3">
           <!-- Facebook -->
           <a
             href="https://www.facebook.com/loslingotes"
             target="_blank"
-            rel="noopener"
-            class="inline-flex items-center gap-3 rounded-xl border border-black/10 bg-white/60 px-4 py-3 text-sm
-                   hover:bg-white dark:border-white/10 dark:bg-zinc-900/40 dark:hover:bg-zinc-900"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-3 rounded-xl border border-black/10 bg-white/60 px-4 py-3 text-sm hover:bg-white dark:border-white/10 dark:bg-zinc-900/40 dark:hover:bg-zinc-900"
           >
             <span
-              class="flex h-9 w-9 items-center justify-center rounded-full bg-blue-600 text-white"
+              class="flex h-9 w-9 items-center justify-center rounded-full bg-blue-600 text-white font-bold"
             >
               f
             </span>
             <span>Facebook · Los Lingotes</span>
+          </a>
+
+          <!-- Instagram -->
+          <a
+            href="https://www.instagram.com/comparsalingotes/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-3 rounded-xl border border-black/10 bg-white/60 px-4 py-3 text-sm hover:bg-white dark:border-white/10 dark:bg-zinc-900/40 dark:hover:bg-zinc-900"
+          >
+            <span
+              class="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-tr from-pink-500 via-red-500 to-yellow-400 text-white font-bold"
+            >
+              ig
+            </span>
+            <span>Instagram · @comparsalingotes</span>
           </a>
         </div>
       </div>
@@ -42,11 +61,10 @@ const year = new Date().getFullYear();
 
     <!-- Línea inferior -->
     <div
-      class="mt-10 flex flex-col items-center justify-between gap-3 border-t border-black/10 pt-6 text-xs
-             text-zinc-600 dark:border-white/10 dark:text-zinc-400 sm:flex-row"
+      class="mt-10 flex flex-col items-center justify-between gap-3 border-t border-black/10 pt-6 text-xs text-zinc-600 dark:border-white/10 dark:text-zinc-400 sm:flex-row"
     >
       <span>© {year} Comparsa Los Lingotes</span>
-      <span>Talavera la Real · Carnaval</span>
+      <a href="#inicio" class="hover:underline">Volver arriba ↑</a>
     </div>
   </div>
 </footer>

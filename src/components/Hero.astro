@@ -1,10 +1,22 @@
 ---
 import { site } from "../data/site";
+const heroImg = site.heroImage;
 ---
 
 <section id="inicio" class="relative overflow-hidden">
   <div class="absolute inset-0 -z-10">
-    <div class="absolute inset-0 bg-zinc-950"></div>
+    <!-- Imagen anual -->
+    <img
+      src={heroImg}
+      alt={`Imagen edición ${new Date().getFullYear()} · Comparsa Los Lingotes`}
+      class="h-full w-full object-cover"
+      loading="eager"
+      decoding="async"
+    />
+
+    <!-- Oscurecido + oro (mejor legibilidad) -->
+    <div class="absolute inset-0 bg-zinc-950/55"></div>
+
     <div
       class="absolute -left-40 -top-40 h-112 w-240 rotate-[-18deg] rounded-[999px] bg-linear-to-r from-amber-200/25 via-amber-400/25 to-yellow-200/10 blur-2xl"
     >
@@ -13,7 +25,8 @@ import { site } from "../data/site";
       class="absolute -right-40 -bottom-48 h-112 w-240 rotate-12 rounded-[999px] bg-linear-to-r from-yellow-200/10 via-amber-400/25 to-amber-200/10 blur-2xl"
     >
     </div>
-    <div class="absolute inset-0 bg-linear-to-b from-transparent via-zinc-950/40 to-zinc-950"></div>
+
+    <div class="absolute inset-0 bg-linear-to-b from-zinc-950/20 via-zinc-950/60 to-zinc-950"></div>
   </div>
 
   <div class="mx-auto max-w-5xl px-4 py-14 sm:py-20">
@@ -25,24 +38,25 @@ import { site } from "../data/site";
           ✨ Carnaval • {site.city}
         </p>
 
-        <h1 class="text-4xl font-bold text-zinc-300">
+        <h1 class="mt-4 text-4xl font-extrabold tracking-tight text-zinc-100 sm:text-5xl">
           Comparsa de Carnaval Los Lingotes de Talavera la Real
         </h1>
+
         <h2 class="sr-only">Comparsa de carnaval en Talavera la Real (Badajoz)</h2>
-        <p class="mt-5 text-base leading-relaxed text-zinc-200">
+
+        <p class="mt-4 max-w-xl text-base leading-relaxed text-zinc-200/90 sm:text-lg">
           {site.tagline}
         </p>
 
         <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <!-- Mejor: baja a la sección vídeos (y desde allí ya enlazas a FB/IG) -->
           <a
             href="#videos"
-            target="_blank"
-            rel="noopener"
-            class="inline-flex items-center justify-center gap-2 rounded-2xl bg-amber-300 px-5 py-3 text-sm font-semibold text-zinc-950
-         shadow-lg shadow-amber-300/20 hover:bg-amber-200"
+            class="inline-flex items-center justify-center gap-2 rounded-2xl bg-amber-300 px-5 py-3 text-sm font-semibold text-zinc-950 shadow-lg shadow-amber-300/20 hover:bg-amber-200"
           >
             ▶ Ver actuaciones
           </a>
+
           <a
             href="#galeria"
             class="inline-flex items-center justify-center rounded-2xl border border-zinc-700 bg-zinc-900/40 px-5 py-3 text-sm font-semibold text-white hover:bg-zinc-900"
@@ -58,34 +72,36 @@ import { site } from "../data/site";
         >
           <div class="flex items-center justify-between">
             <p class="text-xs font-bold text-amber-200">Edición</p>
-            <p class="text-xs text-zinc-300 font-bold">limited</p>
+            <p class="text-xs font-bold text-zinc-300">2026</p>
           </div>
 
           <div class="mt-5 flex items-center justify-center">
             <img
-              src={site.logo}
-              alt="Logo Los Lingotes"
+              src={site.heroImage}
+              alt="Logo de la comparsa de carnaval Los Lingotes de Talavera la Real"
               class="h-56 w-56 rounded-full object-cover ring-2 ring-amber-300/40 shadow-lg shadow-amber-300/10"
               loading="lazy"
+              decoding="async"
             />
           </div>
 
-          <p class="mt-6 text-center text-sm text-zinc-200 font-bold">“{site.tagline}”</p>
+          <p class="mt-6 text-center text-sm font-bold text-zinc-200">“{site.tagline}”</p>
         </div>
       </div>
     </div>
-  </div>
-</section>
-<section class="text-center mt-12 text-lg text-zinc-500 dark:text-zinc-200 font-bold">
-  <p>
-    <strong>Los Lingotes</strong> es una comparsa de carnaval de
-    <strong>Talavera la Real (Badajoz, Extremadura)</strong>, con una trayectoria marcada por la
-    pasión por el carnaval, la música y el espectáculo.
-  </p>
 
-  <p class="mt-4">
-    Cada año, la comparsa Los Lingotes participa activamente en el
-    <strong>Carnaval de Talavera la Real</strong>, llevando a las calles actuaciones cargadas de
-    colores, crítica y puesta en escena.
-  </p>
+    <!-- Texto SEO local (queda bonito y ayuda a Google) -->
+    <section class="mt-12 text-center text-base font-semibold text-zinc-200/90 sm:text-lg">
+      <p>
+        <strong>Los Lingotes</strong> es una comparsa de carnaval de
+        <strong> Talavera la Real (Badajoz, Extremadura)</strong>, con una trayectoria marcada por
+        la pasión por el carnaval, la música y el espectáculo.
+      </p>
+
+      <p class="mt-4">
+        Cada año participamos en el <strong>Carnaval de Talavera la Real</strong> con actuaciones llenas
+        de color, crítica y puesta en escena.
+      </p>
+    </section>
+  </div>
 </section>

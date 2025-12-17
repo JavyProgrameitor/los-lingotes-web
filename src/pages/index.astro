@@ -5,6 +5,7 @@ import Hero from "../components/Hero.astro";
 import SectionGaleria from "../components/SectionGaleria.astro";
 import SectionVideos from "../components/SectionVideos.astro";
 import Footer from "../components/Footer.astro";
+import SectionInstagram from "../components/SectionInstagram.astro";
 
 const SITE_URL = "https://loslingotes.es";
 const OG_IMAGE = `${SITE_URL}/og.jpg`;
@@ -65,6 +66,11 @@ const jsonLd = JSON.stringify({
       content="Comparsa de Carnaval Los Lingotes de Talavera la Real. Actuaciones, galería y vídeos."
     />
     <meta name="twitter:image" content={OG_IMAGE} />
+
+    <!-- SEO local: datos estructurados -->
+    <script type="application/ld+json" is:inline set:html={jsonLd} />
+
+    <!-- Tema: evita flash -->
     <script is:inline>
       (() => {
         const stored = localStorage.getItem("theme");
@@ -73,16 +79,14 @@ const jsonLd = JSON.stringify({
         document.documentElement.classList.toggle("dark", theme === "dark");
       })();
     </script>
-    <script type="application/ld+json" set:html={jsonLd} /></head
-  >
+  </head>
+
+  <body class="bg-amber-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
+    <Header />
+    <Hero />
+    <SectionGaleria />
+    <SectionVideos />
+    <SectionInstagram />
+    <Footer />
+  </body>
 </html>
-
-<!-- Tema: evita flash -->
-
-<body class="bg-amber-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
-  <Header />
-  <Hero />
-  <SectionGaleria />
-  <SectionVideos />
-  <Footer />
-</body>
