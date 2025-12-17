@@ -3,39 +3,48 @@ import { videos } from "../data/videos";
 ---
 
 <section id="videos" class="mx-auto max-w-5xl px-4 py-12">
-  <h2 class="text-2xl font-semibold" style="font-family: var(--font-display);">Vídeos</h2>
-
-  <p class="mt-2 text-zinc-700 dark:text-zinc-300">Fragmentos y actuaciones de Los Lingotes.</p>
+  <header>
+    <h2 class="text-2xl font-semibold" style="font-family: var(--font-display);">
+      Vídeos y actuaciones
+    </h2>
+    <p class="mt-2 text-zinc-700 dark:text-zinc-300">
+      Fragmentos y actuaciones de la comparsa Los Lingotes en Talavera la Real.
+    </p>
+  </header>
 
   <div class="mt-6 grid gap-6 sm:grid-cols-2">
     {
       videos.map((video) => (
-        <a
-          href={video.url}
-          target="_blank"
-          rel="noopener"
-          class="group relative block overflow-hidden rounded-2xl border border-black/10 bg-white/60 shadow-sm backdrop-blur transition
-               hover:shadow-lg dark:border-white/10 dark:bg-zinc-900/40"
-        >
-          <img
-            src={video.image}
-            alt={video.title}
-            class="aspect-video w-full object-cover transition group-hover:scale-105"
-            loading="lazy"
-          />
-          <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition group-hover:opacity-100">
-            <div class="flex h-16 w-16 items-center justify-center rounded-full bg-amber-300 text-zinc-950 shadow-lg">
-              ▶
-            </div>
-          </div>
+        <article class="h-full">
+          <a
+            href={video.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group relative block h-full overflow-hidden rounded-2xl border border-black/10 bg-white/60 shadow-sm backdrop-blur transition hover:shadow-lg dark:border-white/10 dark:bg-zinc-900/40 dark:hover:bg-zinc-900"
+            aria-label={`Ver vídeo en Facebook: ${video.title}`}
+          >
+            <img
+              src={video.image}
+              alt={video.title}
+              class="aspect-video w-full object-cover transition group-hover:scale-105"
+              loading="lazy"
+              decoding="async"
+            />
 
-          <div class="p-4">
-            <p class="text-sm font-semibold">{video.title}</p>
-            <p class="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
-              Ver vídeo completo en Facebook →
-            </p>
-          </div>
-        </a>
+            <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition group-hover:opacity-100">
+              <div class="flex h-16 w-16 items-center justify-center rounded-full bg-amber-300 text-zinc-950 shadow-lg">
+                ▶
+              </div>
+            </div>
+
+            <div class="p-4">
+              <h3 class="text-sm font-semibold">{video.title}</h3>
+              <p class="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
+                Ver vídeo completo en Facebook →
+              </p>
+            </div>
+          </a>
+        </article>
       ))
     }
   </div>
