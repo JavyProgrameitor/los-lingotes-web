@@ -15,6 +15,7 @@
     "*.{js,jsx,ts,tsx,astro,md,mdx,json,css}": "prettier --write"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.6.0",
     "@fontsource/cinzel": "^5.2.8",
     "@fontsource/inter": "^5.2.8",
     "@tailwindcss/vite": "^4.1.18",
