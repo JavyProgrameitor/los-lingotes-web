@@ -39,6 +39,7 @@ const jsonLd = JSON.stringify({
     />
 
     <link rel="canonical" href={`${SITE_URL}/`} />
+    <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="theme-color" content="#0a0a0a" />
 
     <!-- Open Graph -->
@@ -84,6 +85,13 @@ const jsonLd = JSON.stringify({
   <body class="bg-amber-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
     <Header />
     <Hero />
+    <section class="sr-only">
+      <h2>Carnaval de Talavera la Real</h2>
+      <p>
+        Comparsa Los Lingotes participa cada año en el carnaval de Talavera la Real, siendo una de
+        las comparsas más representativas del carnaval en Extremadura.
+      </p>
+    </section>
     <SectionGaleria />
     <SectionVideos />
     <SectionInstagram />
