@@ -6,6 +6,7 @@ import SectionGaleria from "../components/SectionGaleria.astro";
 import SectionVideos from "../components/SectionVideos.astro";
 import Footer from "../components/Footer.astro";
 import SectionInstagram from "../components/SectionInstagram.astro";
+import TicTok from "../components/Tic-tok.astro";
 
 const SITE_URL = "https://loslingotes.es";
 const OG_IMAGE = `${SITE_URL}/og.jpg`;
@@ -16,7 +17,11 @@ const jsonLd = JSON.stringify({
   name: "Comparsa Los Lingotes",
   url: SITE_URL,
   logo: OG_IMAGE,
-  sameAs: ["https://www.facebook.com/loslingotes"],
+  sameAs: [
+    "https://www.facebook.com/loslingotes",
+    "https://www.instagram.com/comparsalingotes",
+    "https://www.tiktok.com/@comparsaloslingotes",
+  ],
   address: {
     "@type": "PostalAddress",
     addressLocality: "Talavera la Real",
@@ -39,7 +44,11 @@ const jsonLd = JSON.stringify({
     />
 
     <link rel="canonical" href={`${SITE_URL}/`} />
+
+    <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+
     <meta name="theme-color" content="#0a0a0a" />
 
     <!-- Open Graph -->
@@ -125,6 +134,7 @@ const jsonLd = JSON.stringify({
     <SectionGaleria />
     <SectionVideos />
     <SectionInstagram />
+    <TicTok />
     <Footer />
   </body>
 </html>
