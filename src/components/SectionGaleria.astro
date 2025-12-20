@@ -20,7 +20,9 @@ import { galeria } from "../data/galeria";
               class="h-64 w-full rounded-2xl object-cover ring-1 ring-black/10 dark:ring-white/10"
               loading="lazy"
             />
-            <figcaption class="mt-2 text-xs text-zinc-600 dark:text-zinc-400">{img.alt}</figcaption>
+            <figcaption class="mt-2 text-xs text-zinc-600 dark:text-zinc-400">
+              {img.alt ?? "Actuación de la comparsa Los Lingotes en Talavera la Real"}
+            </figcaption>
           </figure>
         ))
       }
