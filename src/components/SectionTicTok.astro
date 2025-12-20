@@ -23,7 +23,7 @@ import { tictok } from "../data/tictok";
           >
             <img
               src={item.image}
-              alt={item.title}
+              alt={`Publicación en redes: ${item.title ?? "Los Lingotes"}`}
               class="aspect-video w-full object-cover transition group-hover:scale-105"
               loading="lazy"
               decoding="async"

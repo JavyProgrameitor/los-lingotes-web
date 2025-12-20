@@ -25,7 +25,7 @@ import { videos } from "../data/videos";
           >
             <img
               src={video.image}
-              alt={video.title}
+              alt={`Vídeo de Los Lingotes: ${video.title ?? "actuación"}`}
               class="aspect-video w-full object-cover transition group-hover:scale-105"
               loading="lazy"
               decoding="async"

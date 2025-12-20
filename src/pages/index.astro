@@ -6,7 +6,7 @@ import SectionGaleria from "../components/SectionGaleria.astro";
 import SectionVideos from "../components/SectionVideos.astro";
 import Footer from "../components/Footer.astro";
 import SectionInstagram from "../components/SectionInstagram.astro";
-import TicTok from "../components/Tic-tok.astro";
+import SectionTicTok from "../components/SectionTicTok.astro";
 
 const SITE_URL = "https://loslingotes.es";
 const OG_IMAGE = `${SITE_URL}/og.jpg`;
@@ -110,9 +110,9 @@ const jsonLd = JSON.stringify({
 
       <div class="mt-8 grid gap-6 sm:grid-cols-2">
         <p class="text-zinc-700 dark:text-zinc-300">
-          Con una trayectoria marcada por la música, la crítica y la puesta en escena, Los Lingotes
-          se ha consolidado como una de las comparsas más representativas del carnaval en la
-          provincia de Badajoz.
+          Con una trayectoria marcada por la música, el baile y la puesta en escena, Los Lingotes se
+          ha consolidado como una de las comparsas más representativas del carnaval en la provincia
+          de Badajoz.
         </p>
 
         <p class="text-zinc-700 dark:text-zinc-300">
@@ -134,7 +134,7 @@ const jsonLd = JSON.stringify({
     <SectionGaleria />
     <SectionVideos />
     <SectionInstagram />
-    <TicTok />
+    <SectionTicTok />
     <Footer />
   </body>
 </html>
