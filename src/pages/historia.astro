@@ -4,10 +4,36 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
 const SITE_URL = "https://loslingotes.es";
+const OG_IMAGE = `${SITE_URL}/og.jpg`;
+
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Historia del Carnaval | Comparsa Los Lingotes",
+  url: `${SITE_URL}/historia/`,
+  description:
+    "Historia de la comparsa Los Lingotes de Talavera la Real. Trayectoria y evolución en el carnaval.",
+  isPartOf: {
+    "@type": "WebSite",
+    name: "Comparsa Los Lingotes",
+    url: SITE_URL,
+  },
+  about: {
+    "@type": "Organization",
+    name: "Comparsa Los Lingotes",
+    url: SITE_URL,
+    logo: OG_IMAGE,
+    sameAs: [
+      "https://www.facebook.com/loslingotes",
+      "https://www.instagram.com/comparsalingotes",
+      "https://www.tiktok.com/@comparsaloslingotes",
+    ],
+  },
+});
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -18,11 +44,12 @@ const SITE_URL = "https://loslingotes.es";
       content="Historia de la comparsa de carnaval Los Lingotes de Talavera la Real. Trayectoria, años y evolución en el carnaval de Extremadura."
     />
 
-    <link rel="canonical" href={`${SITE_URL}/historia`} />
+    <link rel="canonical" href={`${SITE_URL}/historia/`} />
 
     <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <link rel="apple-touch-icon" href="/favicon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="article" />
@@ -34,6 +61,22 @@ const SITE_URL = "https://loslingotes.es";
     <meta property="og:url" content={`${SITE_URL}/historia`} />
     <meta property="og:image" content={`${SITE_URL}/og.jpg`} />
     <meta property="og:locale" content="es_ES" />
+    <meta property="og:site_name" content="Comparsa Los Lingotes" />
+    <meta property="og:image:alt" content="Comparsa Los Lingotes" />
+
+    <!-- SEO local: datos estructurados -->
+    <script type="application/ld+json" is:inline set:html={jsonLd} />
+    <!-- cpomprrobación del busacador Bing -->
+    <meta name="msvalidate.01" content="2B7261B181FB3A3472FF5A58A9D5AB6D" />
+    <!-- Tema: evita flash -->
+    <script is:inline>
+      (() => {
+        const stored = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const theme = stored ?? (prefersDark ? "dark" : "light");
+        document.documentElement.classList.toggle("dark", theme === "dark");
+      })();
+    </script>
   </head>
 
   <body class="bg-amber-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">

@@ -17,6 +17,9 @@ const jsonLd = JSON.stringify({
   name: "Comparsa Los Lingotes",
   url: SITE_URL,
   logo: OG_IMAGE,
+  image: OG_IMAGE,
+  description:
+    "Comparsa de Carnaval Los Lingotes de Talavera la Real (Badajoz). Actuaciones, historia y carnaval.",
   sameAs: [
     "https://www.facebook.com/loslingotes",
     "https://www.instagram.com/comparsalingotes",
@@ -46,8 +49,9 @@ const jsonLd = JSON.stringify({
     <link rel="canonical" href={`${SITE_URL}/`} />
 
     <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <link rel="apple-touch-icon" href="/favicon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <meta name="theme-color" content="#0a0a0a" />
 
@@ -81,6 +85,9 @@ const jsonLd = JSON.stringify({
     <script type="application/ld+json" is:inline set:html={jsonLd} />
     <!-- cpomprrobación del busacador Bing -->
     <meta name="msvalidate.01" content="2B7261B181FB3A3472FF5A58A9D5AB6D" />
+
+    <meta name="robots" content="index,follow" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
 
     <!-- Tema: evita flash -->
     <script is:inline>
@@ -123,15 +130,6 @@ const jsonLd = JSON.stringify({
           <strong>Talavera la Real</strong>.
         </p>
       </div>
-    </section>
-
-    <!-- Refuerzo SEO invisible -->
-    <section class="sr-only">
-      <h2>Carnaval de Talavera la Real</h2>
-      <p>
-        Comparsa Los Lingotes participa cada año en el carnaval de Talavera la Real, siendo una de
-        las comparsas más representativas del carnaval en Extremadura.
-      </p>
     </section>
     <SectionGaleria />
     <SectionVideos />
