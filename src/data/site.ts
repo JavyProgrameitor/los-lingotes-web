@@ -4,7 +4,7 @@ export const site = {
   logo: "/og.jpg",
   tagline: "ESENCIA CARNAVALERA...",
   heroImage: "/esencia26.jpg",
-  instagram: "#",
+  instagram: "https://www.instagram.com/comparsalingotes/",
   youtube: "#",
   email: "contacto@loslingotes.es",
 };

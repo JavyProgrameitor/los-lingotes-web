@@ -6,10 +6,10 @@ export const videos = [
     url: "https://www.facebook.com/reel/855796353808942",
   },
   {
-    title: "Campeonato futbolín",
+    title: "Esencia",
     year: 2025,
     image: "/videos/captura01.png",
-    url: "https://www.facebook.com/share/r/1BXzGRkCBy/",
+    url: "https://www.facebook.com/reel/1294726225726057",
   },
   {
     title: "Sudaderas",
