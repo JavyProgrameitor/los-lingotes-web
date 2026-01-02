@@ -1,11 +1,5 @@
 export const videos = [
   {
-    title: "Fiesta fin de año",
-    year: 2025,
-    image: "/videos/captura02.png",
-    url: "https://www.facebook.com/reel/855796353808942",
-  },
-  {
     title: "Esencia",
     year: 2025,
     image: "/videos/captura01.png",

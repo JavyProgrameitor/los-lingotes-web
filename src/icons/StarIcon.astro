@@ -1,0 +1,22 @@
+---
+// "Pro" star icon. Color via Tailwind `text-*`.
+const { class: className = "" } = Astro.props;
+---
+
+<svg
+  class={className}
+  viewBox="0 0 24 24"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+>
+  <path
+    d="M12 2l3.09 6.26 6.91 1-5 4.87 1.18 6.87L12 18.77 5.82 21l1.18-6.87-5-4.87 6.91-1L12 2Z"
+    fill="currentColor"
+    opacity="0.95"></path>
+  <path
+    d="M12 2l3.09 6.26 6.91 1-5 4.87 1.18 6.87L12 18.77 5.82 21l1.18-6.87-5-4.87 6.91-1L12 2Z"
+    stroke="currentColor"
+    stroke-width="1.25"
+    stroke-linejoin="round"></path>
+</svg>
