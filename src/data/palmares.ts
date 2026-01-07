@@ -59,7 +59,7 @@ export const palmares: PalmaresEntry[] = [
   { year: 2022, categoria: "Adultos", tipo: "premio", numero: 1, titulo: "1º Premio" },
   { year: 2023, categoria: "Adultos", tipo: "premio", numero: 1, titulo: "1º Premio" },
   { year: 2024, categoria: "Adultos", tipo: "premio", numero: 2, titulo: "2º Premio" },
-  { year: 2025, categoria: "Adultos", tipo: "premio", numero: 3, titulo: "3º Premio" },
+  { year: 2025, categoria: "Adultos", tipo: "premio", numero: 5, titulo: "5º Premio" },
 
   // =======================
   // Infantil
@@ -82,7 +82,4 @@ export const palmares: PalmaresEntry[] = [
   { year: 2019, categoria: "Infantil", tipo: "premio", numero: 1, titulo: "1º Premio infantil" },
   { year: 2020, categoria: "Infantil", tipo: "premio", numero: 2, titulo: "2º Premio infantil" },
   { year: 2022, categoria: "Infantil", tipo: "premio", numero: 2, titulo: "2º Premio infantil" },
-  { year: 2023, categoria: "Infantil", tipo: "premio", numero: 1, titulo: "1º Premio infantil" },
-  { year: 2024, categoria: "Infantil", tipo: "premio", numero: 2, titulo: "2º Premio infantil" },
-  { year: 2025, categoria: "Infantil", tipo: "premio", numero: 3, titulo: "3º Premio infantil" },
 ];
