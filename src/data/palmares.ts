@@ -218,9 +218,9 @@ export const palmares: PalmaresEntry[] = [
     year: 2023,
     categoria: "Adultos",
     tipo: "premio",
-    numero: 1,
-    titulo: "1º Premio",
-    fuente: "🏆🏆🏆 Clasificación · Año redondo: primer puesto 💥",
+    numero: 2,
+    titulo: "2º Premio",
+    fuente: "🏆🏆  Clasificación · Año redondo: casi primer puesto 💥",
   },
   {
     year: 2024,

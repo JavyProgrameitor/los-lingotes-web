@@ -1,4 +1,5 @@
 export const galeria = [
+  { src: "/galeria/03.png", alt: "ESENCIA CARNAVAL 2026" },
   { src: "/galeria/06.jpg", alt: "NATYA SASTRA 2025" },
   { src: "/galeria/05.jpg", alt: "DIA DE MUERTOS 2024" },
   { src: "/galeria/07.jpg", alt: "AFRO CARIBBEAN 2023" },
