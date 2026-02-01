@@ -6,6 +6,7 @@ import Palmares from "../components/Palmares.astro";
 import SparkleIcon from "../icons/SparkleIcon.astro";
 import TrophyIcon from "../icons/TrophyIcon.astro";
 import StarIcon from "../icons/StarIcon.astro";
+import MusicCarnaval from "../components/MusicCarnaval.astro";
 
 const SITE_URL = "https://loslingotes.es";
 const OG_IMAGE = `${SITE_URL}/og.jpg`;
@@ -207,6 +208,7 @@ const jsonLd = JSON.stringify({
           ilusión.
         </p>
       </section>
+      <Palmares />
       <section class="mt-20 max-w-5xl">
         <header class="max-w-3xl">
           <h2 class="inline-flex items-center gap-2 text-3xl font-semibold">
@@ -370,8 +372,8 @@ const jsonLd = JSON.stringify({
           </section>
         </div>
       </section>
-      <Palmares />
     </main>
     <Footer />
+    <MusicCarnaval < body />
   </body>
 </html>

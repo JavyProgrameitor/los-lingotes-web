@@ -7,10 +7,11 @@ import SectionVideos from "../components/SectionVideos.astro";
 import Footer from "../components/Footer.astro";
 import SectionInstagram from "../components/SectionInstagram.astro";
 import SectionTicTok from "../components/SectionTicTok.astro";
-import Palmares from "../components/Palmares.astro";
 import Salimos from "../components/Salimos.astro";
 import SparkleIcon from "../icons/SparkleIcon.astro";
 import TrophyIcon from "../icons/TrophyIcon.astro";
+import Events from "../components/Events.astro";
+import MusicCarnaval from "../components/MusicCarnaval.astro";
 
 const SITE_URL = "https://loslingotes.es";
 const OG_IMAGE = `${SITE_URL}/og.jpg`;
@@ -123,14 +124,7 @@ const jsonLd = JSON.stringify({
           </span>
           Comparsa Los Lingotes. Carnaval de Talavera la Real y Badajoz
         </h2>
-
-        <p class="mt-4 text-center text-zinc-700 dark:text-zinc-300">
-          La <strong>comparsa Los Lingotes</strong> participa cada año en el
-          <strong>carnaval de Talavera la Real</strong>, formando parte activa de una de las fiestas
-          más importantes de Extremadura.
-        </p>
       </header>
-
       <div class="mt-8 grid gap-6 sm:grid-cols-2">
         <div
           class="rounded-2xl border border-black/10 bg-white/70 p-5 shadow-sm dark:border-white/10 dark:bg-white/5"
@@ -182,11 +176,12 @@ const jsonLd = JSON.stringify({
       </div>
     </section>
     <Salimos />
+    <Events />
     <SectionGaleria />
-    <Palmares />
     <SectionVideos />
     <SectionInstagram />
     <SectionTicTok />
     <Footer />
+    <MusicCarnaval < body />
   </body>
 </html>
