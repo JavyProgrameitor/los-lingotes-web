@@ -3,32 +3,90 @@ const audioSrc = "/audio/batucada.mp3";
 ---
 
 <div class="fixed bottom-4 right-4 z-50">
-  <button
-    id="music-toggle"
-    class="flex items-center gap-2 rounded-full bg-black/80 px-4 py-3 text-sm font-semibold text-white shadow-lg backdrop-blur hover:bg-black"
-    aria-label="Activar o pausar música de carnaval"
-  >
-    ▶️ Carnaval
+  <button id="music-toggle" class="music-btn" aria-label="Activar o pausar música de carnaval">
+    <span class="icon" id="music-icon">🔊</span>
+    <span class="label">Música</span>
   </button>
 
   <audio id="carnaval-audio" src={audioSrc} loop preload="none"></audio>
 </div>
 
+<style>
+  .music-btn {
+    width: 88px;
+    height: 88px;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, #ff0080, #ffb000);
+    color: white;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(6px);
+    border: none;
+    cursor: pointer;
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+
+  .music-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45);
+  }
+
+  .music-btn.playing {
+    animation: pulse 1.2s infinite;
+  }
+
+  .icon {
+    font-size: 32px;
+    line-height: 1;
+  }
+
+  .label {
+    font-size: 12px;
+    opacity: 0.9;
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+</style>
+
 <script is:inline>
   (() => {
     const btn = document.getElementById("music-toggle");
+    const icon = document.getElementById("music-icon");
     const audio = document.getElementById("carnaval-audio");
-    if (!btn || !audio) return;
+    if (!btn || !audio || !icon) return;
 
     let playing = false;
 
-    btn.addEventListener("click", () => {
+    btn.addEventListener("click", async () => {
       if (!playing) {
-        audio.play();
-        btn.textContent = "⏸️ Carnaval";
+        try {
+          await audio.play();
+          icon.textContent = "🔊";
+          btn.classList.add("playing");
+        } catch (e) {
+          console.warn("El navegador bloqueó el autoplay");
+        }
       } else {
         audio.pause();
-        btn.textContent = "▶️ Carnaval";
+        icon.textContent = "🔇";
+        btn.classList.remove("playing");
       }
       playing = !playing;
     });
