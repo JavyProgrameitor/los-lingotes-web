@@ -7,11 +7,11 @@ import SectionVideos from "../components/SectionVideos.astro";
 import Footer from "../components/Footer.astro";
 import SectionInstagram from "../components/SectionInstagram.astro";
 import SectionTicTok from "../components/SectionTicTok.astro";
-import Salimos from "../components/Salimos.astro";
 import SparkleIcon from "../icons/SparkleIcon.astro";
 import TrophyIcon from "../icons/TrophyIcon.astro";
 import Events from "../components/Events.astro";
 import MusicCarnaval from "../components/MusicCarnaval.astro";
+import Disfraz3D from "../components/Disfraz3D.astro";
 
 const SITE_URL = "https://loslingotes.es";
 const OG_IMAGE = `${SITE_URL}/og.jpg`;
@@ -63,7 +63,10 @@ const jsonLd = JSON.stringify({
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Comparsa Los Lingotes" />
-    <meta property="og:title" content="Comparsa Los Lingotes | Talavera la Real" />
+    <meta
+      property="og:title"
+      content="Comparsa Los Lingotes | Talavera la Real"
+    />
     <meta
       property="og:description"
       content="Comparsa de Carnaval Los Lingotes de Talavera la Real. Actuaciones, galería y vídeos."
@@ -79,7 +82,10 @@ const jsonLd = JSON.stringify({
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Comparsa Los Lingotes | Talavera la Real" />
+    <meta
+      name="twitter:title"
+      content="Comparsa Los Lingotes | Talavera la Real"
+    />
     <meta
       name="twitter:description"
       content="Comparsa de Carnaval Los Lingotes de Talavera la Real. Actuaciones, galería y vídeos."
@@ -98,7 +104,9 @@ const jsonLd = JSON.stringify({
     <script is:inline>
       (() => {
         const stored = localStorage.getItem("theme");
-        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
         const theme = stored ?? (prefersDark ? "dark" : "light");
         document.documentElement.classList.toggle("dark", theme === "dark");
       })();
@@ -119,69 +127,70 @@ const jsonLd = JSON.stringify({
             class="mx-auto mb-3 flex w-fit items-center justify-center gap-2 rounded-2xl bg-white/60 px-3 py-1 text-sm text-zinc-700 ring-1 ring-black/10 dark:bg-white/5 dark:text-zinc-200 dark:ring-white/10"
           >
             <SparkleIcon class="h-4 w-4 text-amber-600 dark:text-amber-300" />
-            Carnaval &amp; Comparsa
+            Carnaval &amp; Comparsa Los Lingotes
             <TrophyIcon class="h-4 w-4 text-amber-600 dark:text-amber-300" />
           </span>
-          Comparsa Los Lingotes. Carnaval de Talavera la Real y Badajoz
-        </h2>
-      </header>
-      <div class="mt-8 grid gap-6 sm:grid-cols-2">
-        <div
-          class="rounded-2xl border border-black/10 bg-white/70 p-5 shadow-sm dark:border-white/10 dark:bg-white/5"
-        >
-          <div class="flex items-start gap-3">
-            <span
-              class="grid h-10 w-10 place-items-center rounded-xl bg-amber-500/10 text-amber-700 dark:text-amber-300"
-              aria-hidden="true"
+          <Disfraz3D />
+          <div class="mt-8 grid gap-6 sm:grid-cols-2">
+            <div
+              class="rounded-2xl border border-black/10 bg-white/70 p-5 shadow-sm dark:border-white/10 dark:bg-white/5"
             >
-              <SparkleIcon class="h-5 w-5" />
-            </span>
-            <p class="text-zinc-700 dark:text-zinc-300">
-              Con una trayectoria marcada por la música, el baile y la puesta en escena, Los
-              Lingotes se ha consolidado como una de las comparsas más representativas del carnaval
-              en la provincia de Badajoz.
-            </p>
-          </div>
-        </div>
+              <div class="flex items-start gap-3">
+                <span
+                  class="grid h-10 w-10 place-items-center rounded-xl bg-amber-500/10 text-amber-700 dark:text-amber-300"
+                  aria-hidden="true"
+                >
+                  <SparkleIcon class="h-5 w-5" />
+                </span>
+                <p class="text-zinc-700 dark:text-zinc-300">
+                  Con una trayectoria marcada por la música, el baile y la
+                  puesta en escena, Los Lingotes se ha consolidado como una de
+                  las comparsas más representativas del carnaval en la provincia
+                  de Badajoz.
+                </p>
+              </div>
+            </div>
 
-        <div
-          class="rounded-2xl border border-black/10 bg-white/70 p-5 shadow-sm dark:border-white/10 dark:bg-white/5"
-        >
-          <div class="flex items-start gap-3">
-            <span
-              class="grid h-10 w-10 place-items-center rounded-xl bg-amber-500/10 text-amber-700 dark:text-amber-300"
-              aria-hidden="true"
+            <div
+              class="rounded-2xl border border-black/10 bg-white/70 p-5 shadow-sm dark:border-white/10 dark:bg-white/5"
             >
-              <TrophyIcon class="h-5 w-5" />
-            </span>
-            <div class="text-zinc-700 dark:text-zinc-300">
-              <p>
-                Cada edición del carnaval es una oportunidad para conectar con el público, llevar el
-                espectáculo a las calles y mantener viva la tradición carnavalera en
-                <strong> Talavera la Real</strong>.
-              </p>
+              <div class="flex items-start gap-3">
+                <span
+                  class="grid h-10 w-10 place-items-center rounded-xl bg-amber-500/10 text-amber-700 dark:text-amber-300"
+                  aria-hidden="true"
+                >
+                  <TrophyIcon class="h-5 w-5" />
+                </span>
+                <div class="text-zinc-700 dark:text-zinc-300">
+                  <p>
+                    Cada edición del carnaval es una oportunidad para conectar
+                    con el público, llevar el espectáculo a las calles y
+                    mantener viva la tradición carnavalera en
+                    <strong> Talavera la Real</strong>.
+                  </p>
 
-              <a
-                href="/historia/"
-                title="Historia de la comparsa Los Lingotes"
-                class="mt-3 inline-flex items-center gap-2 rounded-xl border border-black/10 bg-white px-3 py-2 text-sm font-medium text-zinc-900 shadow-sm hover:bg-black/5 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
-              >
-                <span aria-hidden="true">📜</span>
-                Conoce nuestra historia
-                <span aria-hidden="true">→</span>
-              </a>
+                  <a
+                    href="/historia/"
+                    title="Historia de la comparsa Los Lingotes"
+                    class="mt-3 inline-flex items-center gap-2 rounded-xl border border-black/10 bg-white px-3 py-2 text-sm font-medium text-zinc-900 shadow-sm hover:bg-black/5 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
+                  >
+                    <span aria-hidden="true">📜</span>
+                    Conoce nuestra historia
+                    <span aria-hidden="true">→</span>
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+        </h2>
+        <Events />
+        <SectionGaleria />
+        <SectionVideos />
+        <SectionInstagram />
+        <SectionTicTok />
+        <Footer />
+        <MusicCarnaval />
+      </header>
     </section>
-    <Salimos />
-    <Events />
-    <SectionGaleria />
-    <SectionVideos />
-    <SectionInstagram />
-    <SectionTicTok />
-    <Footer />
-    <MusicCarnaval />
   </body>
 </html>

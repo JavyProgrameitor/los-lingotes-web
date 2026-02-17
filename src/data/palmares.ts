@@ -41,7 +41,8 @@ export const palmares: PalmaresEntry[] = [
     tipo: "accesit",
     numero: 4,
     titulo: "4º Accésit",
-    fuente: "⭐ Carnaval de Badajoz · Subiendo posiciones… se venía algo grande 👀",
+    fuente:
+      "⭐ Carnaval de Badajoz · Subiendo posiciones… se venía algo grande 👀",
   },
   {
     year: 1999,
@@ -65,7 +66,8 @@ export const palmares: PalmaresEntry[] = [
     tipo: "accesit",
     numero: 2,
     titulo: "2º Accésit",
-    fuente: "⭐⭐ Carnaval de Badajoz · Cerca del podio… ¡se notaba el salto! 🔥",
+    fuente:
+      "⭐⭐ Carnaval de Badajoz · Cerca del podio… ¡se notaba el salto! 🔥",
   },
   {
     year: 2003,
@@ -81,7 +83,8 @@ export const palmares: PalmaresEntry[] = [
     tipo: "accesit",
     numero: 4,
     titulo: "4º Accésit",
-    fuente: "⭐⭐⭐⭐ Carnaval de Badajoz · Manteniendo nivel y estilo propio ✨",
+    fuente:
+      "⭐⭐⭐⭐ Carnaval de Badajoz · Manteniendo nivel y estilo propio ✨",
   },
   {
     year: 2006,
@@ -89,7 +92,8 @@ export const palmares: PalmaresEntry[] = [
     tipo: "accesit",
     numero: 10,
     titulo: "10º Accésit",
-    fuente: "⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ Carnaval de Badajoz · Año de rodaje y equipo 🚀",
+    fuente:
+      "⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ Carnaval de Badajoz · Año de rodaje y equipo 🚀",
   },
   {
     year: 2007,
@@ -122,7 +126,8 @@ export const palmares: PalmaresEntry[] = [
     numero: 1,
     titulo: "1º Accésit",
     nota: "(compartido)",
-    fuente: "🥇⭐ Ayuntamiento/Carnaval · 1º Accésit compartido: año potente 🤝",
+    fuente:
+      "🥇⭐ Ayuntamiento/Carnaval · 1º Accésit compartido: año potente 🤝",
   },
   {
     year: 2011,
@@ -146,7 +151,8 @@ export const palmares: PalmaresEntry[] = [
     tipo: "accesit",
     numero: 2,
     titulo: "2º Accésit",
-    fuente: "⭐⭐ Carnaval de Badajoz · A un pasito del podio… tensión máxima 😤",
+    fuente:
+      "⭐⭐ Carnaval de Badajoz · A un pasito del podio… tensión máxima 😤",
   },
   {
     year: 2014,
@@ -238,6 +244,14 @@ export const palmares: PalmaresEntry[] = [
     titulo: "5º Premio",
     fuente: "🏆 Clasificación · Top 5: seguir arriba siempre cuenta 💪",
   },
+  {
+    year: 2026,
+    categoria: "Adultos",
+    tipo: "premio",
+    numero: 1,
+    titulo: "1º Premio",
+    fuente: "🏆 Merecido primer premio del carnaval 💪",
+  },
 
   // =======================
   // Infantil
@@ -256,7 +270,8 @@ export const palmares: PalmaresEntry[] = [
     tipo: "premio",
     numero: 1,
     titulo: "1º Premio infantil",
-    fuente: "🏆🏆🏆 Carnaval de Badajoz · Campeones infantiles. Futuro asegurado 👶👑",
+    fuente:
+      "🏆🏆🏆 Carnaval de Badajoz · Campeones infantiles. Futuro asegurado 👶👑",
   },
   {
     year: 2013,
@@ -330,5 +345,13 @@ export const palmares: PalmaresEntry[] = [
     numero: 2,
     titulo: "2º Premio infantil",
     fuente: "🏆🏆 El Estribillo · Otro podio: no se baja el nivel 💪",
+  },
+  {
+    year: 2026,
+    categoria: "Infantil",
+    tipo: "premio",
+    numero: 2,
+    titulo: "2º Premio infantil",
+    fuente: "🏆🏆 El Estribillo · De nuevo otro segundo y merecido premio 💪",
   },
 ];
