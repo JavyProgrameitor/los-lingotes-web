@@ -54,15 +54,23 @@ const tiktokUrl =
   "https://www.tiktok.com/@comparsaloslingotes/photo/7598938590155967767?is_from_webapp=1&sender_device=pc";
 ---
 
-<section id="eventos" class="text-center mx-auto max-w-7xl px-4 py-16" data-events="fitur">
-  <header class="max-w-3xl">
-    <h2 class="text-2xl font-semibold sm:text-3xl" style="font-family: var(--font-display);">
+<section
+  id="eventos"
+  class="text-center mx-auto max-w-7xl px-4 py-16"
+  data-events="fitur"
+>
+  <header class="text-center max-w-3xl">
+    <h2
+      class="text-2xl font-semibold sm:text-3xl"
+      style="font-family: var(--font-display);"
+    >
       FITUR Madrid · Los Lingotes en ruta
     </h2>
 
-    <p class="mt-3 text-zinc-700 dark:text-zinc-300">
-      Visitamos <strong>FITUR (Madrid)</strong> para promocionar nuestra comparsa y calentar motores para
-      el <strong>Carnaval</strong>. Aquí tienes algunas fotos del evento.
+    <p class="text-center mt-3 text-zinc-700 dark:text-zinc-300">
+      Visitamos <strong>FITUR (Madrid)</strong> para promocionar nuestra comparsa
+      y calentar motores para el <strong>Carnaval</strong>. Aquí tienes algunas
+      fotos del evento.
     </p>
 
     <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
@@ -82,7 +90,9 @@ const tiktokUrl =
     class="mt-8 rounded-2xl border border-black/10 p-4 shadow-sm dark:border-white/10 dark:bg-white/5"
   >
     <div class="flex items-center justify-between gap-3">
-      <p class="text-sm text-zinc-700 dark:text-zinc-300">Desliza para ver todas las imagenes</p>
+      <p class="text-sm text-zinc-700 dark:text-zinc-300">
+        Desliza para ver todas las imagenes
+      </p>
 
       <div class="flex gap-2">
         <button
@@ -113,7 +123,10 @@ const tiktokUrl =
       >
         {
           images.map((img, i) => (
-            <li class="slide" aria-label={`Imagen ${i + 1} de ${images.length}`}>
+            <li
+              class="slide"
+              aria-label={`Imagen ${i + 1} de ${images.length}`}
+            >
               <img
                 src={img.src}
                 alt={img.alt}
@@ -155,7 +168,9 @@ const tiktokUrl =
     prev.addEventListener("click", () => scrollByPage(-1));
     next.addEventListener("click", () => scrollByPage(1));
 
-    carousel.addEventListener("scroll", () => window.requestAnimationFrame(updateButtons));
+    carousel.addEventListener("scroll", () =>
+      window.requestAnimationFrame(updateButtons),
+    );
     window.addEventListener("resize", () => updateButtons());
 
     updateButtons();
