@@ -6,7 +6,10 @@ const modelSrc = "/models/modelo-mobile.glb"; // el optimizado de 13MB
 const modelPoster = heroImg;
 ---
 
-<script type="module" src="/vendor/model-viewer.min.js"></script>
+<script
+  type="module"
+  src="https://unpkg.com/@google/model-viewer@3.4.0/dist/model-viewer.min.js"
+  defer></script>
 
 <section id="inicio" class="relative overflow-hidden">
   <div class="absolute inset-0 -z-10">
@@ -64,27 +67,21 @@ const modelPoster = heroImg;
             <p class="text-xs font-bold text-amber-200">Edición</p>
             <p class="text-xs font-bold text-zinc-300">2026</p>
           </div>
-
-          <div class="mt-5">
-            <model-viewer
-              class="hero3d"
-              src={modelSrc}
-              poster={modelPoster}
-              alt="Modelo 3D del disfraz de Los Lingotes"
-              camera-controls
-              touch-action="pan-y"
-              interaction-prompt="none"
-              auto-rotate-delay="5"
-              rotation-per-second="2deg"
-              reveal="auto"
-              shadow-intensity="0"
-              exposure="1.1"
-              ar
-              ar-modes="webxr scene-viewer quick-look"
-            >
-            </model-viewer>
-          </div>
-
+          <model-viewer
+            class="hero3d"
+            src={modelSrc}
+            poster={modelPoster}
+            alt="Modelo 3D del disfraz de Los Lingotes"
+            camera-controls
+            touch-action="pan-y"
+            interaction-prompt="none"
+            reveal="auto"
+            shadow-intensity="0"
+            exposure="1.1"
+            ar
+            ar-modes="webxr scene-viewer quick-look"
+          >
+          </model-viewer>
           <p class="mt-5 text-center text-sm font-bold text-zinc-200">
             “{site.tagline}”
           </p>
