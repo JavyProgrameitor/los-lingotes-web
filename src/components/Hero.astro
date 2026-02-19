@@ -10,6 +10,17 @@ const modelPoster = heroImg;
   type="module"
   src="https://unpkg.com/@google/model-viewer@3.4.0/dist/model-viewer.min.js"
   defer></script>
+<script is:inline>
+  customElements.whenDefined("model-viewer").then(() => {
+    const MV = customElements.get("model-viewer");
+    // IMPORTANTE: ruta local a tus decoders
+    MV.dracoDecoderLocation = "/draco/";
+
+    // Forzamos que quite el poster y empiece a cargar
+    const el = document.querySelector("model-viewer.hero3d");
+    if (el && el.dismissPoster) el.dismissPoster();
+  });
+</script>
 
 <section id="inicio" class="relative overflow-hidden">
   <div class="absolute inset-0 -z-10">
@@ -76,7 +87,7 @@ const modelPoster = heroImg;
             disable-zoom
             disable-pan
             interaction-prompt="none"
-            reveal="auto"
+            reveal="interaction"
             shadow-intensity="0"
             exposure="1.1"
             touch-action="pan-y"
