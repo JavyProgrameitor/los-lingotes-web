@@ -2,7 +2,7 @@
 import { site } from "../data/site";
 
 const heroImg = site.heroImage;
-const modelSrc = "/models/modelo-mobile.glb"; // el optimizado de 13MB
+const modelSrc = "/models/Clary01-mobile.glb"; // el optimizado de 13MB
 const modelPoster = heroImg;
 ---
 
@@ -73,15 +73,19 @@ const modelPoster = heroImg;
             poster={modelPoster}
             alt="Modelo 3D del disfraz de Los Lingotes"
             camera-controls
-            touch-action="pan-y"
+            disable-zoom
+            disable-pan
             interaction-prompt="none"
             reveal="auto"
             shadow-intensity="0"
             exposure="1.1"
-            ar
-            ar-modes="webxr scene-viewer quick-look"
+            touch-action="pan-y"
+            camera-orbit="0deg 75deg 2.6m"
+            min-camera-orbit="-35deg 75deg 2.6m"
+            max-camera-orbit="35deg 75deg 2.6m"
           >
           </model-viewer>
+
           <p class="mt-5 text-center text-sm font-bold text-zinc-200">
             “{site.tagline}”
           </p>
