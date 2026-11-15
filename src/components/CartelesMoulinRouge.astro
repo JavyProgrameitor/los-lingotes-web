@@ -1,0 +1,204 @@
+---
+const carteles = [
+  {
+    imagen: "/moulin1.jpeg",
+    titulo: "Vaudeville des Plaisirs",
+    subtitulo: "El espectáculo",
+    descripcion: "La música, el baile y la magia de las noches parisinas.",
+  },
+  {
+    imagen: "/moulin2.jpeg",
+    titulo: "La Fée Verte",
+    subtitulo: "La fantasía",
+    descripcion: "Un mundo de inspiración, misterio y espíritu bohemio.",
+  },
+  {
+    imagen: "/moulin3.jpeg",
+    titulo: "Scènes de la Nuit",
+    subtitulo: "El arte",
+    descripcion: "Las calles de París cobran vida entre luces y artistas.",
+  },
+  {
+    imagen: "/moulin4.jpeg",
+    titulo: "L'Amour",
+    subtitulo: "La pasión",
+    descripcion: "Historias de amor y sueños bajo las luces de París.",
+  },
+];
+---
+
+<section
+  id="moulin-rouge"
+  class="relative overflow-hidden bg-[#17090b] px-4 py-20 text-[#f5dfb5] sm:py-28"
+>
+  <!-- Iluminación decorativa -->
+  <div
+    class="pointer-events-none absolute left-1/2 top-0 h-96 w-full -translate-x-1/2 bg-[#8b1725]/20 blur-[110px]"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="relative mx-auto max-w-6xl">
+    <!-- Encabezado -->
+    <header class="mb-16 text-center">
+      <p class="mb-4 text-xs uppercase tracking-[0.35em] text-[#c69b55]">
+        París · 1889
+      </p>
+
+      <h2 class="font-display text-3xl font-bold text-[#f3d69b] sm:text-5xl">
+        Las noches del Moulin Rouge
+      </h2>
+
+      <div class="mx-auto my-7 flex max-w-xs items-center gap-4">
+        <span class="h-px flex-1 bg-[#c69b55]/60"></span>
+        <span class="text-2xl text-[#d6ad67]">✦</span>
+        <span class="h-px flex-1 bg-[#c69b55]/60"></span>
+      </div>
+
+      <p
+        class="mx-auto max-w-2xl text-sm leading-relaxed text-[#dfc9b1] sm:text-lg"
+      >
+        Un viaje al París de la Belle Époque, donde la música, el arte y la
+        pasión iluminaban las noches de la ciudad.
+      </p>
+    </header>
+
+    <!-- Carteles -->
+    <div class="grid gap-16 md:grid-cols-2 md:gap-12">
+      {
+        carteles.map((cartel, index) => (
+          <article
+            class="cartel-reveal group mx-auto w-full max-w-md"
+            style={`--delay: ${index % 2 === 0 ? "0ms" : "150ms"}`}
+          >
+            <div class="cartel-frame">
+              <img
+                src={cartel.imagen}
+                alt={`Cartel ${cartel.titulo} inspirado en el París de 1889`}
+                class="block h-auto w-full"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+
+            <div class="mt-7 text-center">
+              <p class="mb-2 text-xs uppercase tracking-[0.3em] text-[#c69b55]">
+                {cartel.subtitulo}
+              </p>
+
+              <h3 class="cartel-title text-xl font-bold sm:text-2xl">
+                {cartel.titulo}
+              </h3>
+
+              <p class="mt-3 text-sm leading-relaxed text-[#d6c0a6]">
+                {cartel.descripcion}
+              </p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <!-- Cierre -->
+    <div class="mt-20 text-center">
+      <p class="text-sm uppercase tracking-[0.3em] text-[#d6ad67]">
+        ✦ Los Lingotes · Carnaval 2027 ✦
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  const carteles = document.querySelectorAll(".cartel-reveal");
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px 0px -40px 0px",
+      },
+    );
+
+    carteles.forEach((cartel) => observer.observe(cartel));
+  } else {
+    carteles.forEach((cartel) => cartel.classList.add("visible"));
+  }
+</script>
+
+<style>
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .cartel-title {
+    font-family: var(--font-display);
+    color: #f3d69b;
+  }
+
+  /* Marco dorado */
+  .cartel-frame {
+    padding: 7px;
+    border: 1px solid rgba(214, 173, 103, 0.65);
+    background: #251114;
+
+    box-shadow:
+      0 0 0 5px rgba(214, 173, 103, 0.08),
+      0 20px 50px rgba(0, 0, 0, 0.45);
+
+    transition:
+      transform 0.5s ease,
+      box-shadow 0.5s ease;
+  }
+
+  .cartel-frame img {
+    width: 100%;
+    height: auto;
+  }
+
+  @media (hover: hover) {
+    .cartel-frame:hover {
+      transform: translateY(-8px);
+
+      box-shadow:
+        0 0 0 5px rgba(214, 173, 103, 0.12),
+        0 25px 60px rgba(0, 0, 0, 0.6),
+        0 0 30px rgba(214, 173, 103, 0.15);
+    }
+  }
+
+  /* Animación al hacer scroll */
+  .cartel-reveal {
+    opacity: 0;
+    transform: translateY(65px);
+
+    transition:
+      opacity 1s ease var(--delay, 0ms),
+      transform 1s ease var(--delay, 0ms);
+  }
+
+  .cartel-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Accesibilidad */
+  @media (prefers-reduced-motion: reduce) {
+    .cartel-reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    .cartel-frame {
+      transition: none;
+    }
+  }
+</style>

@@ -3,15 +3,9 @@ import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
 import SectionGaleria from "../components/SectionGaleria.astro";
-import SectionVideos from "../components/SectionVideos.astro";
 import Footer from "../components/Footer.astro";
-import SectionInstagram from "../components/SectionInstagram.astro";
-import SectionTicTok from "../components/SectionTicTok.astro";
-import SparkleIcon from "../icons/SparkleIcon.astro";
-import TrophyIcon from "../icons/TrophyIcon.astro";
-import Events from "../components/Events.astro";
 import MusicCarnaval from "../components/MusicCarnaval.astro";
-import Disfraz3D from "../components/Disfraz3D.astro";
+import CartelesMoulinRouge from "../components/CartelesMoulinRouge.astro";
 
 const SITE_URL = "https://loslingotes.es";
 const OG_IMAGE = `${SITE_URL}/og.jpg`;
@@ -119,7 +113,106 @@ const jsonLd = JSON.stringify({
 
     <!-- Carnaval (SEO + contenido visible) -->
     <section id="carnaval" class="mx-auto max-w-5xl px-4 py-16">
-      <!-- Header SOLO con texto (nada de divs ni componentes dentro del h2) -->
+      <!-- MOULIN ROUGE 2027 -->
+      <section
+        id="carnaval"
+        class="relative overflow-hidden bg-[#120609] px-5 py-20 text-[#f5dfb5] sm:py-28"
+      >
+        <!-- Iluminación ambiental -->
+        <div
+          class="pointer-events-none absolute left-1/2 top-0 h-80 w-full -translate-x-1/2 bg-[#8b1725]/25 blur-[100px]"
+          aria-hidden="true"
+        >
+        </div>
+
+        <div class="relative mx-auto max-w-5xl text-center">
+          <!-- Introducción -->
+          <p
+            class="mb-5 text-xs font-semibold uppercase tracking-[0.35em] text-[#d6ad67] sm:text-sm"
+          >
+            Comparsa Los Lingotes · Carnaval 2027
+          </p>
+
+          <!-- Título -->
+          <h2
+            class="mx-auto max-w-4xl text-4xl font-bold leading-tight text-[#f3d69b] sm:text-6xl"
+            style="font-family: var(--font-display);"
+          >
+            Bienvenidos al espectáculo
+          </h2>
+
+          <!-- Separador -->
+          <div class="mx-auto my-9 flex max-w-xs items-center gap-5">
+            <span class="h-px flex-1 bg-[#c69b55]/60"></span>
+
+            <span class="text-3xl text-[#d6ad67]">✦</span>
+
+            <span class="h-px flex-1 bg-[#c69b55]/60"></span>
+          </div>
+
+          <!-- Presentación -->
+          <p
+            class="mx-auto max-w-3xl text-lg leading-relaxed text-[#ead6bd] sm:text-xl"
+          >
+            Las luces vuelven a encenderse, el telón comienza a abrirse y la
+            magia del carnaval nos invita a vivir una nueva historia.
+          </p>
+
+          <p
+            class="mx-auto mt-7 max-w-3xl text-base leading-relaxed text-[#cdb8a3] sm:text-lg"
+          >
+            En 2027, la Comparsa Los Lingotes se inspira en el universo del <strong
+              class="text-[#f3d69b]">Moulin Rouge</strong
+            >, trasladándonos al París de la Belle Époque: una época de música,
+            arte, cabaret y noches inolvidables.
+          </p>
+
+          <p
+            class="mx-auto mt-7 max-w-3xl text-base leading-relaxed text-[#cdb8a3] sm:text-lg"
+          >
+            Desde Talavera la Real, seguimos viviendo el carnaval con la
+            ilusión, la pasión y el espíritu que nos acompañan en cada edición.
+          </p>
+
+          <!-- Destacado -->
+          <div
+            class="mx-auto mt-14 max-w-2xl border-y border-[#c69b55]/40 px-5 py-8"
+          >
+            <p
+              class="text-xl font-semibold italic leading-relaxed text-[#f3d69b] sm:text-2xl"
+              style="font-family: var(--font-display);"
+            >
+              «Que se enciendan las luces, que comience el espectáculo».
+            </p>
+          </div>
+
+          <!-- Botones -->
+          <div
+            class="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row"
+          >
+            <a
+              href="#moulin-rouge"
+              class="inline-flex min-h-12 w-full items-center justify-center rounded-full border border-[#d6ad67] bg-[#b88a42] px-8 py-3 text-sm font-bold uppercase tracking-wider text-[#160508] transition-colors hover:bg-[#f1ce86] sm:w-auto"
+            >
+              Descubre el Moulin Rouge
+            </a>
+
+            <a
+              href="/historia/"
+              class="inline-flex min-h-12 w-full items-center justify-center rounded-full border border-[#d6ad67]/60 px-8 py-3 text-sm font-semibold uppercase tracking-wider text-[#f3d69b] transition-colors hover:bg-[#d6ad67]/10 sm:w-auto"
+            >
+              Nuestra historia
+            </a>
+          </div>
+
+          <!-- Pie decorativo -->
+          <p class="mt-16 text-xs uppercase tracking-[0.3em] text-[#c69b55]/80">
+            ✦ Talavera la Real · Badajoz ✦
+          </p>
+        </div>
+      </section>
+
+      <!-- Header SOLO con texto (nada de divs ni componentes dentro del h2) 
       <header class="mx-auto max-w-2xl">
         <h2
           class="text-center text-2xl font-bold sm:text-3xl"
@@ -137,9 +230,9 @@ const jsonLd = JSON.stringify({
         </h2>
       </header>
 
-      <!-- 3D fuera del h2 -->
+       3D fuera del h2 -->
       <div class="mt-10">
-        <Disfraz3D />
+        <CartelesMoulinRouge />
       </div>
 
       <!-- Tarjetas -->
@@ -152,7 +245,6 @@ const jsonLd = JSON.stringify({
               class="grid h-10 w-10 place-items-center rounded-xl bg-amber-500/10 text-amber-700 dark:text-amber-300"
               aria-hidden="true"
             >
-              <SparkleIcon class="h-5 w-5" />
             </span>
             <p class="text-base text-zinc-700 dark:text-zinc-300 sm:text-lg">
               Con una trayectoria marcada por la música, el baile y la puesta en
@@ -170,7 +262,6 @@ const jsonLd = JSON.stringify({
               class="grid h-10 w-10 place-items-center rounded-xl bg-amber-500/10 text-amber-700 dark:text-amber-300"
               aria-hidden="true"
             >
-              <TrophyIcon class="h-5 w-5" />
             </span>
 
             <div class="text-base text-zinc-700 dark:text-zinc-300 sm:text-lg">
@@ -199,11 +290,6 @@ const jsonLd = JSON.stringify({
     <!-- Secciones fuera del header (estructura correcta) -->
 
     <SectionGaleria />
-    <Events />
-    <SectionVideos />
-    <SectionInstagram />
-    <SectionTicTok />
     <Footer />
-    <MusicCarnaval />
   </body>
 </html>

@@ -1,143 +1,108 @@
 ---
-import { site } from "../data/site";
-
-const heroImg = site.heroImage;
-const modelSrc = "/models/Clary01-mobile-final.glb"; // el optimizado de 13MB
-const modelPoster = heroImg;
+const heroImage = "moulin-rouge-2027.png";
+const heroVideo = "/video/moulin-rouge.mp4";
 ---
 
-<script
-  type="module"
-  src="https://unpkg.com/@google/model-viewer@3.4.0/dist/model-viewer.min.js"
-  defer></script>
-<script is:inline>
-  customElements.whenDefined("model-viewer").then(() => {
-    const MV = customElements.get("model-viewer");
-    // IMPORTANTE: ruta local a tus decoders
-    MV.dracoDecoderLocation = "/draco/";
-
-    // Forzamos que quite el poster y empiece a cargar
-    const el = document.querySelector("model-viewer.hero3d");
-    if (el && el.dismissPoster) el.dismissPoster();
-  });
-</script>
-
-<section id="inicio" class="relative overflow-hidden">
-  <div class="absolute inset-0 -z-10">
-    <img
-      src={heroImg}
-      alt={`Imagen edición ${new Date().getFullYear()} · Comparsa Los Lingotes`}
-      class="h-full w-full object-cover"
-      loading="eager"
-      decoding="async"
-    />
-    <div class="absolute inset-0 bg-zinc-950/55"></div>
-    <div
-      class="absolute inset-0 bg-linear-to-b from-zinc-950/20 via-zinc-950/60 to-zinc-950"
-    >
-    </div>
+<section id="inicio" class="moulin-hero">
+  <!-- Fondo desenfocado para PC -->
+  <div
+    class="hero-background"
+    style={`background-image: url('${heroImage}')`}
+    aria-hidden="true"
+  >
   </div>
 
-  <div class="mx-auto max-w-5xl px-4 py-14 sm:py-20">
-    <div class="grid items-center gap-10 md:grid-cols-2">
-      <div>
-        <p
-          class="inline-flex items-center gap-2 rounded-full border border-amber-300/30 bg-amber-300/10 px-3 py-1 text-xs font-medium text-amber-200"
-        >
-          ✨ Carnaval • {site.city}
-        </p>
+  <!-- Oscurecimiento -->
+  <div class="hero-overlay" aria-hidden="true"></div>
 
-        <h1
-          class="mt-4 text-4xl font-extrabold tracking-tight text-zinc-100 sm:text-5xl"
-        >
-          Carnaval con Los Lingotes de Talavera la Real
-        </h1>
-
-        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-          <a
-            href="#videos"
-            class="inline-flex items-center justify-center gap-2 rounded-2xl bg-amber-300 px-5 py-3 text-sm font-semibold text-zinc-950 shadow-lg shadow-amber-300/20 hover:bg-amber-200"
-          >
-            ▶ Edición 2026
-          </a>
-
-          <a
-            href="#galeria"
-            class="inline-flex items-center justify-center rounded-2xl border border-zinc-700 bg-zinc-900/40 px-5 py-3 text-sm font-semibold text-white hover:bg-zinc-900"
-          >
-            Ver galería
-          </a>
-        </div>
-      </div>
-
-      <div class="relative">
-        <div
-          class="mx-auto max-w-sm rounded-4xl border border-amber-300/20 bg-zinc-900/40 p-6 shadow-2xl shadow-black/40 backdrop-blur"
-        >
-          <div class="flex items-center justify-between">
-            <p class="text-xs font-bold text-amber-200">Edición</p>
-            <p class="text-xs font-bold text-zinc-300">2026</p>
-          </div>
-          <model-viewer
-            class="hero3d"
-            src={modelSrc}
-            poster={modelPoster}
-            alt="Modelo 3D del disfraz de Los Lingotes"
-            camera-controls
-            disable-zoom
-            disable-pan
-            interaction-prompt="none"
-            reveal="interaction"
-            loading="lazy"
-            preload
-            shadow-intensity="0"
-            environment-image="neutral"
-            tone-mapping="neutral"
-            exposure="1.1"
-            anti-aliasing="fxaa"
-            auto-rotate
-            auto-rotate-delay="1500"
-            rotation-per-second="10deg"
-            interpolation-decay="200"
-            powerpreference="high-performance"
-            touch-action="pan-y"
-            camera-target="0m 0.25m 0m"
-            camera-orbit="0deg 75deg 2.9m"
-            min-camera-orbit="-35deg 75deg 2.9m"
-            max-camera-orbit="35deg 75deg 2.9m"
-          >
-            <div
-              slot="poster"
-              class="grid h-full place-items-center text-center"
-            >
-              <div
-                class="rounded-2xl bg-zinc-950/50 px-4 py-3 text-xs font-semibold text-zinc-200"
-              >
-                Los Lingotes 2026
-              </div>
-            </div>
-          </model-viewer>
-          <p class="mt-5 text-center text-sm font-bold text-zinc-200">
-            “{site.tagline}”
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
+  <!-- Vídeo principal -->
+  <video
+    class="hero-video"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+    poster={heroImage}
+    aria-label="Animación Moulin Rouge de Los Lingotes 2027"
+  >
+    <source src={heroVideo} type="video/mp4" />
+  </video>
 </section>
 
 <style>
-  .hero3d {
+  .moulin-hero {
+    position: relative;
     width: 100%;
-    height: 320px;
-    border-radius: 999px;
+    height: 100svh;
     overflow: hidden;
-    background: radial-gradient(
-      circle at 30% 20%,
-      rgba(255, 255, 255, 0.08),
-      transparent 55%
+    background: #120407;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    isolation: isolate;
+  }
+
+  /* Fondo cinematográfico */
+  .hero-background {
+    position: absolute;
+    inset: -30px;
+    background-position: center;
+    background-size: cover;
+    filter: blur(35px) brightness(0.45);
+    transform: scale(1.1);
+    z-index: -2;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(15, 2, 5, 0.55),
+      transparent 35%,
+      transparent 65%,
+      rgba(15, 2, 5, 0.55)
     );
-    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
-    border: 2px solid rgba(251, 191, 36, 0.35);
+    z-index: -1;
+  }
+
+  /* Vídeo principal */
+  .hero-video {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    z-index: 1;
+  }
+
+  /* MÓVILES */
+  @media (max-width: 767px) {
+    .hero-background,
+    .hero-overlay {
+      display: none;
+    }
+
+    .hero-video {
+      object-fit: cover;
+      transform: scale(0.9);
+    }
+  }
+
+  /* Accesibilidad */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-video {
+      display: none;
+    }
+
+    .hero-background {
+      inset: 0;
+      filter: none;
+      transform: none;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
   }
 </style>

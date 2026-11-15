@@ -1,146 +1,262 @@
 ---
 import { site } from "../data/site";
+
+const links = [
+  { name: "Inicio", href: "/#inicio" },
+  { name: "Moulin Rouge", href: "/#moulin-rouge" },
+  { name: "Galería", href: "/#galeria" },
+  { name: "Historia", href: "/historia/" },
+];
 ---
 
 <header
-  class="sticky top-0 z-50 border-b border-black/10 bg-amber-50/80 backdrop-blur dark:border-white/10 dark:bg-zinc-950/70"
+  class="moulin-header sticky top-0 z-50 border-b border-[#c69b55]/30 bg-[#190509]/95 text-[#f5dfb5] shadow-lg shadow-black/30 backdrop-blur-xl"
 >
-  <div class="mx-auto max-w-5xl px-4">
-    <div class="flex h-16 items-center justify-between gap-3">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="flex h-17 items-center justify-between gap-3">
+      <!-- LOGOTIPO -->
       <a
         href="/#inicio"
-        class="flex items-center gap-3"
-        aria-label="Ir al inicio"
+        class="flex min-w-0 items-center gap-3"
+        aria-label="Los Lingotes - Ir al inicio"
       >
         <img
           src={site.logo}
           alt="Logo Los Lingotes"
-          class="h-10 w-10 rounded-full object-cover ring-1 ring-black/10 dark:ring-white/10"
+          class="h-11 w-11 shrink-0 rounded-full border border-[#d6ad67]/60 object-cover"
           loading="eager"
           decoding="async"
         />
-        <div class="leading-tight">
-          <div class="font-semibold">{site.name}</div>
-          <div class="text-xs text-zinc-600 dark:text-zinc-400">
-            {site.city}
-          </div>
+
+        <div class="min-w-0 leading-tight">
+          <span class="moulin-brand block text-lg font-bold tracking-wide">
+            Los Lingotes
+          </span>
+
+          <span
+            class="block text-[10px] uppercase tracking-[0.15em] text-[#c69b55]"
+          >
+            Moulin Rouge · 2027
+          </span>
         </div>
       </a>
 
-      <!-- Desktop nav -->
+      <!-- NAVEGACIÓN PC -->
       <nav
-        class="hidden items-center gap-1 md:flex"
+        class="hidden items-center gap-7 md:flex"
         aria-label="Navegación principal"
       >
-        <a
-          class="rounded-xl px-3 py-2 text-sm hover:bg-black/5 dark:hover:bg-white/10"
-          href="/#galeria">Galería</a
-        >
-        <a
-          class="rounded-xl px-3 py-2 text-sm hover:bg-black/5 dark:hover:bg-white/10"
-          href="/#videos">Vídeos</a
-        >
-        <a
-          class="rounded-xl px-3 py-2 text-sm hover:bg-black/5 dark:hover:bg-white/10"
-          href="/historia/"
-        >
-          Historia
-        </a>
-        <a
-          class="rounded-xl px-3 py-2 text-sm hover:bg-black/5 dark:hover:bg-white/10"
-          href="/#contacto">Contacto</a
-        >
+        {
+          links.map((link) => (
+            <a
+              href={link.href}
+              class="moulin-link text-sm font-medium tracking-wide"
+            >
+              {link.name}
+            </a>
+          ))
+        }
       </nav>
-      <!-- Actions -->
-      <div class="flex items-center gap-2">
+
+      <!-- BOTONES -->
+      <div class="flex shrink-0 items-center gap-2">
+        <!-- CAMBIAR TEMA -->
         <button
           id="themeToggle"
-          class="rounded-xl border border-black/10 px-3 py-2 text-sm hover:bg-black/5 dark:border-white/10 dark:hover:bg-white/10"
           type="button"
+          class="moulin-control"
           aria-label="Cambiar tema"
           title="Cambiar tema"
         >
           <span id="themeIcon" aria-hidden="true"></span>
-          <span class="ml-2 hidden sm:inline">Tema</span>
         </button>
 
+        <!-- MENÚ MÓVIL -->
         <button
           id="menuBtn"
-          class="rounded-xl border border-black/10 px-3 py-2 text-sm hover:bg-black/5 dark:border-white/10 dark:hover:bg-white/10 md:hidden"
           type="button"
+          class="moulin-control md:hidden"
+          aria-label="Abrir menú"
           aria-controls="mobileMenu"
           aria-expanded="false"
-          aria-label="Abrir menú"
-          title="Abrir menú"
         >
-          ☰
+          <span id="menuIcon" aria-hidden="true">☰</span>
         </button>
       </div>
     </div>
 
-    <!-- Mobile nav -->
-    <div id="mobileMenu" class="hidden pb-3 md:hidden">
-      <nav class="grid gap-1" aria-label="Menú móvil">
-        <a
-          class="rounded-xl px-3 py-2 text-sm hover:bg-black/5 dark:hover:bg-white/10"
-          href="/#galeria">Galería</a
-        >
-        <a
-          class="rounded-xl px-3 py-2 text-sm hover:bg-black/5 dark:hover:bg-white/10"
-          href="/#videos">Vídeos</a
-        >
-        <a
-          class="rounded-xl px-3 py-2 text-sm hover:bg-black/5 dark:hover:bg-white/10"
-          href="/historia/"
-        >
-          Historia
-        </a>
-        <a
-          class="rounded-xl px-3 py-2 text-sm hover:bg-black/5 dark:hover:bg-white/10"
-          href="/#contacto">Contacto</a
-        >
+    <!-- MENÚ MÓVIL -->
+    <div
+      id="mobileMenu"
+      class="hidden border-t border-[#c69b55]/20 pb-5 pt-3 md:hidden"
+    >
+      <nav class="flex flex-col gap-1" aria-label="Navegación móvil">
+        {
+          links.map((link) => (
+            <a
+              href={link.href}
+              class="moulin-mobile-link rounded-lg px-4 py-3 text-center text-sm uppercase tracking-[0.15em]"
+            >
+              {link.name}
+            </a>
+          ))
+        }
       </nav>
+
+      <div class="mt-4 text-center text-xs tracking-[0.2em] text-[#c69b55]">
+        ✦ CARNAVAL 2027 ✦
+      </div>
     </div>
   </div>
 
   <script is:inline>
-    // Theme toggle
+    // CAMBIO DE TEMA
     (() => {
       const btn = document.getElementById("themeToggle");
       const icon = document.getElementById("themeIcon");
+
       const setIcon = () => {
         const isDark = document.documentElement.classList.contains("dark");
-        if (icon) icon.textContent = isDark ? "🌛" : "☀️";
+
+        if (icon) {
+          icon.textContent = isDark ? "☾" : "☀";
+        }
       };
+
       setIcon();
+
       btn?.addEventListener("click", () => {
         const isDark = document.documentElement.classList.toggle("dark");
+
         localStorage.setItem("theme", isDark ? "dark" : "light");
+
         setIcon();
       });
     })();
 
-    // Mobile menu
+    // MENÚ MÓVIL
     (() => {
       const btn = document.getElementById("menuBtn");
       const menu = document.getElementById("mobileMenu");
-      const close = () => {
+      const icon = document.getElementById("menuIcon");
+
+      const closeMenu = () => {
         if (!btn || !menu) return;
+
         menu.classList.add("hidden");
         btn.setAttribute("aria-expanded", "false");
+        btn.setAttribute("aria-label", "Abrir menú");
+
+        if (icon) icon.textContent = "☰";
       };
+
       btn?.addEventListener("click", () => {
         if (!btn || !menu) return;
-        const hidden = menu.classList.toggle("hidden");
-        btn.setAttribute("aria-expanded", String(!hidden));
+
+        const isHidden = menu.classList.toggle("hidden");
+
+        btn.setAttribute("aria-expanded", String(!isHidden));
+        btn.setAttribute("aria-label", isHidden ? "Abrir menú" : "Cerrar menú");
+
+        if (icon) {
+          icon.textContent = isHidden ? "☰" : "✕";
+        }
       });
-      menu
-        ?.querySelectorAll("a")
-        .forEach((a) => a.addEventListener("click", close));
-      document.addEventListener(
-        "keydown",
-        (e) => e.key === "Escape" && close(),
-      );
+
+      menu?.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", closeMenu);
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeMenu();
+      });
     })();
   </script>
 </header>
+
+<style>
+  .moulin-header {
+    font-family: var(--font-sans);
+  }
+
+  .moulin-brand {
+    font-family: var(--font-display);
+    color: #f3d69b;
+    text-shadow: 0 0 15px rgba(214, 173, 103, 0.25);
+  }
+
+  /* ENLACES PC */
+  .moulin-link {
+    position: relative;
+    color: #e9d4b0;
+    transition: color 0.3s ease;
+  }
+
+  .moulin-link:hover {
+    color: #ffd98d;
+  }
+
+  .moulin-link::after {
+    content: "";
+    position: absolute;
+    bottom: -7px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #d6ad67;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+  }
+
+  .moulin-link:hover::after {
+    transform: scaleX(1);
+  }
+
+  /* BOTONES */
+  .moulin-control {
+    display: flex;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(214, 173, 103, 0.4);
+    border-radius: 10px;
+    color: #f3d69b;
+    background: rgba(255, 255, 255, 0.04);
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .moulin-control:hover {
+    background: rgba(214, 173, 103, 0.15);
+    border-color: #d6ad67;
+  }
+
+  /* MENÚ MÓVIL */
+  .moulin-mobile-link {
+    color: #f3d69b;
+    transition: background 0.25s ease;
+  }
+
+  .moulin-mobile-link:hover {
+    background: rgba(214, 173, 103, 0.12);
+  }
+
+  .moulin-control:focus-visible,
+  .moulin-link:focus-visible,
+  .moulin-mobile-link:focus-visible {
+    outline: 2px solid #f3d69b;
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .moulin-link,
+    .moulin-link::after,
+    .moulin-control,
+    .moulin-mobile-link {
+      transition: none;
+    }
+  }
+</style>
