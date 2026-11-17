@@ -10,7 +10,7 @@ const links = [
 ---
 
 <header
-  class="moulin-header sticky top-0 z-50 border-b border-[#c69b55]/30 bg-[#190509]/95 text-[#f5dfb5] shadow-lg shadow-black/30 backdrop-blur-xl"
+  class="moulin-header sticky top-0 z-50 border-b border-[#a67544]/40 bg-[#f5e9d7]/95 text-[#542a2b] shadow-lg shadow-[#542a2b]/10 backdrop-blur-xl transition-colors duration-500 dark:border-[#c69b55]/30 dark:bg-[#190509]/95 dark:text-[#f5dfb5] dark:shadow-black/30"
 >
   <div class="mx-auto max-w-6xl px-4">
     <div class="flex h-17 items-center justify-between gap-3">
@@ -23,7 +23,7 @@ const links = [
         <img
           src={site.logo}
           alt="Logo Los Lingotes"
-          class="h-11 w-11 shrink-0 rounded-full border border-[#d6ad67]/60 object-cover"
+          class="h-11 w-11 shrink-0 rounded-full border border-[#a67544]/60 object-cover dark:border-[#d6ad67]/60"
           loading="eager"
           decoding="async"
         />
@@ -34,7 +34,7 @@ const links = [
           </span>
 
           <span
-            class="block text-[10px] uppercase tracking-[0.15em] text-[#c69b55]"
+            class="block text-[10px] uppercase tracking-[0.15em] text-[#955d31] dark:text-[#c69b55]"
           >
             Moulin Rouge · 2027
           </span>
@@ -88,7 +88,7 @@ const links = [
     <!-- MENÚ MÓVIL -->
     <div
       id="mobileMenu"
-      class="hidden border-t border-[#c69b55]/20 pb-5 pt-3 md:hidden"
+      class="hidden border-t border-[#a67544]/30 pb-5 pt-3 dark:border-[#c69b55]/20 md:hidden"
     >
       <nav class="flex flex-col gap-1" aria-label="Navegación móvil">
         {
@@ -103,7 +103,9 @@ const links = [
         }
       </nav>
 
-      <div class="mt-4 text-center text-xs tracking-[0.2em] text-[#c69b55]">
+      <div
+        class="mt-4 text-center text-xs tracking-[0.2em] text-[#955d31] dark:text-[#c69b55]"
+      >
         ✦ CARNAVAL 2027 ✦
       </div>
     </div>
@@ -120,6 +122,18 @@ const links = [
 
         if (icon) {
           icon.textContent = isDark ? "☾" : "☀";
+        }
+
+        if (btn) {
+          btn.setAttribute(
+            "aria-label",
+            isDark ? "Cambiar a modo claro" : "Cambiar a modo oscuro",
+          );
+
+          btn.setAttribute(
+            "title",
+            isDark ? "Cambiar a modo claro" : "Cambiar a modo oscuro",
+          );
         }
       };
 
@@ -179,8 +193,14 @@ const links = [
     font-family: var(--font-sans);
   }
 
+  /* LOGOTIPO */
   .moulin-brand {
     font-family: var(--font-display);
+    color: #722538;
+    text-shadow: none;
+  }
+
+  :global(.dark) .moulin-brand {
     color: #f3d69b;
     text-shadow: 0 0 15px rgba(214, 173, 103, 0.25);
   }
@@ -188,11 +208,19 @@ const links = [
   /* ENLACES PC */
   .moulin-link {
     position: relative;
-    color: #e9d4b0;
+    color: #722538;
     transition: color 0.3s ease;
   }
 
+  :global(.dark) .moulin-link {
+    color: #e9d4b0;
+  }
+
   .moulin-link:hover {
+    color: #a67544;
+  }
+
+  :global(.dark) .moulin-link:hover {
     color: #ffd98d;
   }
 
@@ -203,10 +231,14 @@ const links = [
     left: 0;
     width: 100%;
     height: 1px;
-    background: #d6ad67;
+    background: #a67544;
     transform: scaleX(0);
     transform-origin: center;
     transition: transform 0.3s ease;
+  }
+
+  :global(.dark) .moulin-link::after {
+    background: #d6ad67;
   }
 
   .moulin-link:hover::after {
@@ -220,35 +252,60 @@ const links = [
     height: 40px;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(214, 173, 103, 0.4);
+    border: 1px solid rgba(166, 117, 68, 0.5);
     border-radius: 10px;
-    color: #f3d69b;
-    background: rgba(255, 255, 255, 0.04);
+    color: #722538;
+    background: rgba(114, 37, 56, 0.04);
     font-size: 20px;
     cursor: pointer;
     transition: all 0.3s ease;
   }
 
+  :global(.dark) .moulin-control {
+    border-color: rgba(214, 173, 103, 0.4);
+    color: #f3d69b;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
   .moulin-control:hover {
+    background: rgba(166, 117, 68, 0.15);
+    border-color: #a67544;
+  }
+
+  :global(.dark) .moulin-control:hover {
     background: rgba(214, 173, 103, 0.15);
     border-color: #d6ad67;
   }
 
   /* MENÚ MÓVIL */
   .moulin-mobile-link {
-    color: #f3d69b;
+    color: #722538;
     transition: background 0.25s ease;
   }
 
+  :global(.dark) .moulin-mobile-link {
+    color: #f3d69b;
+  }
+
   .moulin-mobile-link:hover {
+    background: rgba(166, 117, 68, 0.12);
+  }
+
+  :global(.dark) .moulin-mobile-link:hover {
     background: rgba(214, 173, 103, 0.12);
   }
 
   .moulin-control:focus-visible,
   .moulin-link:focus-visible,
   .moulin-mobile-link:focus-visible {
-    outline: 2px solid #f3d69b;
+    outline: 2px solid #a67544;
     outline-offset: 3px;
+  }
+
+  :global(.dark) .moulin-control:focus-visible,
+  :global(.dark) .moulin-link:focus-visible,
+  :global(.dark) .moulin-mobile-link:focus-visible {
+    outline-color: #f3d69b;
   }
 
   @media (prefers-reduced-motion: reduce) {

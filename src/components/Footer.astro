@@ -4,40 +4,71 @@ const year = new Date().getFullYear();
 
 <footer
   id="contacto"
-  class="border-t border-black/10 bg-amber-100/60 dark:border-white/10 dark:bg-zinc-950"
+  class="relative overflow-hidden border-t border-[#a67544]/30 bg-[#ead8c0] text-[#542a2b] transition-colors duration-500 dark:border-[#c69b55]/30 dark:bg-[#100508] dark:text-[#f5dfb5]"
 >
-  <div class="mx-auto max-w-5xl px-4 py-10">
-    <div class="grid gap-8 sm:grid-cols-2">
+  <!-- Iluminación ambiental -->
+  <div
+    class="pointer-events-none absolute bottom-0 left-1/2 h-52 w-full -translate-x-1/2 bg-[#c69b55]/15 blur-[90px] dark:bg-[#7c1827]/15"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="relative mx-auto max-w-5xl px-4 py-12">
+    <div class="grid gap-10 sm:grid-cols-2">
       <!-- Identidad -->
       <div>
-        <p class="text-lg font-semibold" style="font-family: var(--font-display);">
+        <p
+          class="text-xl font-bold text-[#722538] dark:text-[#f3d69b]"
+          style="font-family: var(--font-display);"
+        >
           Comparsa Los Lingotes
         </p>
-        <p class="mt-2 text-sm text-zinc-700 dark:text-zinc-400">
+
+        <div class="mt-4 h-px w-32 bg-[#a67544]/50 dark:bg-[#c69b55]/50"></div>
+
+        <p class="mt-5 text-sm text-[#67453b] dark:text-[#d6c0a6]">
           Talavera la Real (Badajoz) · Carnaval
         </p>
-        <p class="mt-1 text-sm text-zinc-700 dark:text-zinc-400">
-          Síguenos en redes para ver fotos y actuaciones.
+
+        <p
+          class="mt-3 max-w-sm text-sm leading-relaxed text-[#67453b] dark:text-[#d6c0a6]"
+        >
+          Música, pasión y tradición carnavalera. Síguenos en nuestras redes
+          sociales para descubrir todas las novedades y actuaciones de Los
+          Lingotes.
+        </p>
+
+        <p
+          class="mt-6 text-xs uppercase tracking-[0.25em] text-[#955d31] dark:text-[#c69b55]"
+        >
+          ✦ Carnaval 2027 · Moulin Rouge ✦
         </p>
       </div>
 
-      <!-- Redes -->
-      <div>
-        <p class="text-sm font-semibold uppercase tracking-wide">Redes sociales</p>
+      <!-- Redes sociales -->
+      <div class="sm:justify-self-end">
+        <p
+          class="text-sm font-semibold uppercase tracking-[0.2em] text-[#722538] dark:text-[#f3d69b]"
+        >
+          Síguenos en redes
+        </p>
 
-        <div class="mt-4 flex gap-4">
+        <div class="mt-5 flex gap-4">
           <!-- Facebook -->
           <a
             href="https://www.facebook.com/loslingotes"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Facebook Los Lingotes"
-            class="group flex h-11 w-11 items-center justify-center rounded-full bg-blue-600 text-white transition hover:scale-105"
+            class="group flex h-12 w-12 items-center justify-center rounded-full border border-[#a67544]/50 bg-blue-600 text-white shadow-lg transition duration-300 hover:-translate-y-1 hover:border-[#955d31] dark:border-[#c69b55]/40 dark:hover:border-[#f3d69b] dark:hover:shadow-[#c69b55]/20"
           >
-            <svg viewBox="0 0 24 24" class="h-5 w-5 fill-current">
+            <svg
+              viewBox="0 0 24 24"
+              class="h-5 w-5 fill-current"
+              aria-hidden="true"
+            >
               <path
-                d="M22 12a10 10 0 1 0-11.6 9.9v-7h-2.3V12h2.3V9.7c0-2.3 1.4-3.6 3.5-3.6
-                1 0 2 .2 2 .2v2.2h-1.1c-1.1 0-1.5.7-1.5 1.4V12h2.6l-.4 2.9h-2.2v7A10 10 0 0 0 22 12z"
+                d="M22 12a10 10 0 1 0-11.6 9.9v-7h-2.3V12h2.3V9.7c0-2.3 1.4-3.6 3.5-3.6 1 0 2 .2 2 .2v2.2h-1.1c-1.1 0-1.5.7-1.5 1.4V12h2.6l-.4 2.9h-2.2v7A10 10 0 0 0 22 12z"
               ></path>
             </svg>
           </a>
@@ -48,14 +79,15 @@ const year = new Date().getFullYear();
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram Los Lingotes"
-            class="group flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-tr from-pink-500 via-red-500 to-yellow-400 text-white transition hover:scale-105"
+            class="group flex h-12 w-12 items-center justify-center rounded-full border border-[#a67544]/50 bg-gradient-to-tr from-pink-500 via-red-500 to-yellow-400 text-white shadow-lg transition duration-300 hover:-translate-y-1 hover:border-[#955d31] dark:border-[#c69b55]/40 dark:hover:border-[#f3d69b] dark:hover:shadow-[#c69b55]/20"
           >
-            <svg viewBox="0 0 24 24" class="h-5 w-5 fill-current">
+            <svg
+              viewBox="0 0 24 24"
+              class="h-5 w-5 fill-current"
+              aria-hidden="true"
+            >
               <path
-                d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10
-                2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10zm-5
-                3.5A4.5 4.5 0 1 0 16.5 12 4.5 4.5 0 0 0 12 7.5zm0 7.3A2.8 2.8 0 1 1 14.8 12
-                2.8 2.8 0 0 1 12 14.8zm4.8-7.9a1 1 0 1 1-1 1 1 1 0 0 1 1-1z"
+                d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10zm-5 3.5A4.5 4.5 0 1 0 16.5 12 4.5 4.5 0 0 0 12 7.5zm0 7.3A2.8 2.8 0 1 1 14.8 12 2.8 2.8 0 0 1 12 14.8zm4.8-7.9a1 1 0 1 1-1 1 1 1 0 0 1 1-1z"
               ></path>
             </svg>
           </a>
@@ -66,25 +98,41 @@ const year = new Date().getFullYear();
             target="_blank"
             rel="noopener noreferrer"
             aria-label="TikTok Los Lingotes"
-            class="group flex h-11 w-11 items-center justify-center rounded-full bg-black text-white transition hover:scale-105"
+            class="group flex h-12 w-12 items-center justify-center rounded-full border border-[#a67544]/50 bg-black text-white shadow-lg transition duration-300 hover:-translate-y-1 hover:border-[#955d31] dark:border-[#c69b55]/40 dark:hover:border-[#f3d69b] dark:hover:shadow-[#c69b55]/20"
           >
-            <svg viewBox="0 0 24 24" class="h-5 w-5 fill-current">
+            <svg
+              viewBox="0 0 24 24"
+              class="h-5 w-5 fill-current"
+              aria-hidden="true"
+            >
               <path
-                d="M21 8.3a7.6 7.6 0 0 1-4.5-1.5v7.1a6.4 6.4 0 1 1-5.4-6.3v3.4a2.9 2.9 0 1 0
-                2 2.7V2h3.2a4.5 4.5 0 0 0 4.7 4.3z"
+                d="M21 8.3a7.6 7.6 0 0 1-4.5-1.5v7.1a6.4 6.4 0 1 1-5.4-6.3v3.4a2.9 2.9 0 1 0 2 2.7V2h3.2a4.5 4.5 0 0 0 4.7 4.3z"
               ></path>
             </svg>
           </a>
         </div>
+
+        <p class="mt-6 text-xs text-[#79594c] dark:text-[#bfa98f]">
+          Comparte con nosotros la magia del carnaval.
+        </p>
       </div>
     </div>
 
-    <!-- Línea inferior -->
+    <!-- Separador inferior -->
     <div
-      class="mt-10 flex flex-col items-center justify-between gap-3 border-t border-black/10 pt-6 text-xs text-zinc-600 dark:border-white/10 dark:text-zinc-400 sm:flex-row"
+      class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-[#a67544]/30 pt-7 text-xs text-[#79594c] dark:border-[#c69b55]/30 dark:text-[#cbb49c] sm:flex-row"
     >
-      <span>© {year} Comparsa Los Lingotes</span>
-      <a href="/#inicio" class="hover:underline">Volver arriba ↑</a>
+      <span>
+        © {year} Comparsa Los Lingotes. Todos los derechos reservados.
+      </span>
+
+      <a
+        href="/#inicio"
+        class="inline-flex items-center gap-2 text-[#722538] transition-colors hover:text-[#a67544] dark:text-[#d6ad67] dark:hover:text-[#f3d69b]"
+      >
+        Volver arriba
+        <span aria-hidden="true">↑</span>
+      </a>
     </div>
   </div>
 </footer>

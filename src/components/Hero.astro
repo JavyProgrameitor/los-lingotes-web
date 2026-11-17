@@ -12,10 +12,10 @@ const heroVideo = "/video/moulin-rouge.mp4";
   >
   </div>
 
-  <!-- Oscurecimiento -->
+  <!-- Oscurecimiento lateral -->
   <div class="hero-overlay" aria-hidden="true"></div>
 
-  <!-- Vídeo principal -->
+  <!-- Vídeo principal: sin modificaciones -->
   <video
     class="hero-video"
     autoplay
@@ -31,32 +31,71 @@ const heroVideo = "/video/moulin-rouge.mp4";
 </section>
 
 <style>
+  /* CONTENEDOR PRINCIPAL */
   .moulin-hero {
     position: relative;
     width: 100%;
     height: 100svh;
     overflow: hidden;
-    background: #120407;
+
+    /* Modo claro */
+    background: #f5e9d7;
+
     display: flex;
     align-items: center;
     justify-content: center;
     isolation: isolate;
+
+    transition: background-color 0.5s ease;
   }
 
-  /* Fondo cinematográfico */
+  /* Modo oscuro */
+  :global(.dark) .moulin-hero {
+    background: #120407;
+  }
+
+  /* FONDO CINEMATOGRÁFICO */
   .hero-background {
     position: absolute;
     inset: -30px;
     background-position: center;
     background-size: cover;
-    filter: blur(35px) brightness(0.45);
+
+    /* Modo claro: fondo desenfocado más luminoso */
+    filter: blur(35px) brightness(0.9);
+
     transform: scale(1.1);
     z-index: -2;
+
+    transition: filter 0.5s ease;
   }
 
+  /* Modo oscuro: iluminación original */
+  :global(.dark) .hero-background {
+    filter: blur(35px) brightness(0.45);
+  }
+
+  /* CAPA LATERAL */
   .hero-overlay {
     position: absolute;
     inset: 0;
+
+    /* Modo claro */
+    background: linear-gradient(
+      90deg,
+      rgba(245, 233, 215, 0.75),
+      transparent 35%,
+      transparent 65%,
+      rgba(245, 233, 215, 0.75)
+    );
+
+    z-index: -1;
+
+    transition: background 0.5s ease;
+  }
+
+  /* Modo oscuro: degradado original */
+  :global(.dark) .hero-overlay {
     background: linear-gradient(
       90deg,
       rgba(15, 2, 5, 0.55),
@@ -64,10 +103,9 @@ const heroVideo = "/video/moulin-rouge.mp4";
       transparent 65%,
       rgba(15, 2, 5, 0.55)
     );
-    z-index: -1;
   }
 
-  /* Vídeo principal */
+  /* VÍDEO PRINCIPAL: CONFIGURACIÓN ORIGINAL */
   .hero-video {
     position: relative;
     width: 100%;
@@ -78,7 +116,7 @@ const heroVideo = "/video/moulin-rouge.mp4";
     z-index: 1;
   }
 
-  /* MÓVILES */
+  /* MÓVILES: CONSERVAMOS EL ENCUADRE ORIGINAL */
   @media (max-width: 767px) {
     .hero-background,
     .hero-overlay {
@@ -91,7 +129,7 @@ const heroVideo = "/video/moulin-rouge.mp4";
     }
   }
 
-  /* Accesibilidad */
+  /* ACCESIBILIDAD */
   @media (prefers-reduced-motion: reduce) {
     .hero-video {
       display: none;

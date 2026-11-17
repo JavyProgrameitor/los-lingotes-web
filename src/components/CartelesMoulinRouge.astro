@@ -29,11 +29,11 @@ const carteles = [
 
 <section
   id="moulin-rouge"
-  class="relative overflow-hidden bg-[#17090b] px-4 py-20 text-[#f5dfb5] sm:py-28"
+  class="relative overflow-hidden bg-[#f3e5d0] px-4 py-20 text-[#542a2b] transition-colors duration-500 dark:bg-[#17090b] dark:text-[#f5dfb5] sm:py-28"
 >
   <!-- Iluminación decorativa -->
   <div
-    class="pointer-events-none absolute left-1/2 top-0 h-96 w-full -translate-x-1/2 bg-[#8b1725]/20 blur-[110px]"
+    class="pointer-events-none absolute left-1/2 top-0 h-96 w-full -translate-x-1/2 bg-[#c69b55]/15 blur-[110px] dark:bg-[#8b1725]/20"
     aria-hidden="true"
   >
   </div>
@@ -41,22 +41,27 @@ const carteles = [
   <div class="relative mx-auto max-w-6xl">
     <!-- Encabezado -->
     <header class="mb-16 text-center">
-      <p class="mb-4 text-xs uppercase tracking-[0.35em] text-[#c69b55]">
+      <p
+        class="mb-4 text-xs uppercase tracking-[0.35em] text-[#955d31] dark:text-[#c69b55]"
+      >
         París · 1889
       </p>
 
-      <h2 class="font-display text-3xl font-bold text-[#f3d69b] sm:text-5xl">
+      <h2
+        class="text-3xl font-bold text-[#722538] dark:text-[#f3d69b] sm:text-5xl"
+        style="font-family: var(--font-display);"
+      >
         Las noches del Moulin Rouge
       </h2>
 
       <div class="mx-auto my-7 flex max-w-xs items-center gap-4">
-        <span class="h-px flex-1 bg-[#c69b55]/60"></span>
-        <span class="text-2xl text-[#d6ad67]">✦</span>
-        <span class="h-px flex-1 bg-[#c69b55]/60"></span>
+        <span class="h-px flex-1 bg-[#a67544]/60 dark:bg-[#c69b55]/60"></span>
+        <span class="text-2xl text-[#955d31] dark:text-[#d6ad67]">✦</span>
+        <span class="h-px flex-1 bg-[#a67544]/60 dark:bg-[#c69b55]/60"></span>
       </div>
 
       <p
-        class="mx-auto max-w-2xl text-sm leading-relaxed text-[#dfc9b1] sm:text-lg"
+        class="mx-auto max-w-2xl text-sm leading-relaxed text-[#67453b] dark:text-[#dfc9b1] sm:text-lg"
       >
         Un viaje al París de la Belle Époque, donde la música, el arte y la
         pasión iluminaban las noches de la ciudad.
@@ -82,7 +87,7 @@ const carteles = [
             </div>
 
             <div class="mt-7 text-center">
-              <p class="mb-2 text-xs uppercase tracking-[0.3em] text-[#c69b55]">
+              <p class="mb-2 text-xs uppercase tracking-[0.3em] text-[#955d31] dark:text-[#c69b55]">
                 {cartel.subtitulo}
               </p>
 
@@ -90,7 +95,7 @@ const carteles = [
                 {cartel.titulo}
               </h3>
 
-              <p class="mt-3 text-sm leading-relaxed text-[#d6c0a6]">
+              <p class="mt-3 text-sm leading-relaxed text-[#67453b] dark:text-[#d6c0a6]">
                 {cartel.descripcion}
               </p>
             </div>
@@ -101,7 +106,9 @@ const carteles = [
 
     <!-- Cierre -->
     <div class="mt-20 text-center">
-      <p class="text-sm uppercase tracking-[0.3em] text-[#d6ad67]">
+      <p
+        class="text-sm uppercase tracking-[0.3em] text-[#955d31] dark:text-[#d6ad67]"
+      >
         ✦ Los Lingotes · Carnaval 2027 ✦
       </p>
     </div>
@@ -109,7 +116,7 @@ const carteles = [
 </section>
 
 <script>
-  const carteles = document.querySelectorAll(".cartel-reveal");
+  const elementos = document.querySelectorAll(".cartel-reveal");
 
   if ("IntersectionObserver" in window) {
     const observer = new IntersectionObserver(
@@ -127,35 +134,45 @@ const carteles = [
       },
     );
 
-    carteles.forEach((cartel) => observer.observe(cartel));
+    elementos.forEach((cartel) => observer.observe(cartel));
   } else {
-    carteles.forEach((cartel) => cartel.classList.add("visible"));
+    elementos.forEach((cartel) => cartel.classList.add("visible"));
   }
 </script>
 
 <style>
-  .font-display {
-    font-family: var(--font-display);
-  }
-
   .cartel-title {
     font-family: var(--font-display);
+    color: #722538;
+  }
+
+  :global(.dark) .cartel-title {
     color: #f3d69b;
   }
 
   /* Marco dorado */
   .cartel-frame {
     padding: 7px;
-    border: 1px solid rgba(214, 173, 103, 0.65);
+    border: 1px solid rgba(166, 117, 68, 0.65);
+    background: #e2c9a9;
+
+    box-shadow:
+      0 0 0 5px rgba(166, 117, 68, 0.08),
+      0 20px 50px rgba(64, 26, 30, 0.18);
+
+    transition:
+      transform 0.5s ease,
+      box-shadow 0.5s ease,
+      background-color 0.5s ease;
+  }
+
+  :global(.dark) .cartel-frame {
+    border-color: rgba(214, 173, 103, 0.65);
     background: #251114;
 
     box-shadow:
       0 0 0 5px rgba(214, 173, 103, 0.08),
       0 20px 50px rgba(0, 0, 0, 0.45);
-
-    transition:
-      transform 0.5s ease,
-      box-shadow 0.5s ease;
   }
 
   .cartel-frame img {
@@ -166,7 +183,12 @@ const carteles = [
   @media (hover: hover) {
     .cartel-frame:hover {
       transform: translateY(-8px);
+      box-shadow:
+        0 0 0 5px rgba(166, 117, 68, 0.15),
+        0 25px 60px rgba(64, 26, 30, 0.3);
+    }
 
+    :global(.dark) .cartel-frame:hover {
       box-shadow:
         0 0 0 5px rgba(214, 173, 103, 0.12),
         0 25px 60px rgba(0, 0, 0, 0.6),

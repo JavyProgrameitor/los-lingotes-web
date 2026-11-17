@@ -1,15 +1,22 @@
 ---
 import "../styles/global.css";
+
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
+import CartelesMoulinRouge from "../components/CartelesMoulinRouge.astro";
 import SectionGaleria from "../components/SectionGaleria.astro";
 import Footer from "../components/Footer.astro";
-import MusicCarnaval from "../components/MusicCarnaval.astro";
-import CartelesMoulinRouge from "../components/CartelesMoulinRouge.astro";
 
+// URL principal de la web
 const SITE_URL = "https://loslingotes.es";
+
+// Imagen institucional del aniversario
 const OG_IMAGE = `${SITE_URL}/og.jpg`;
 
+// Imagen principal del Carnaval 2027
+const CARNAVAL_IMAGE = `${SITE_URL}/moulin-rouge-2027.png`;
+
+// Datos estructurados de la comparsa
 const jsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -31,6 +38,28 @@ const jsonLd = JSON.stringify({
     addressCountry: "ES",
   },
 });
+
+// Datos estructurados de la portada
+const webPageJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Comparsa Los Lingotes | Moulin Rouge 2027",
+  url: `${SITE_URL}/`,
+  description:
+    "Descubre el Carnaval 2027 de la Comparsa Los Lingotes, inspirado en el Moulin Rouge.",
+
+  // Imagen representativa de la portada
+  image: CARNAVAL_IMAGE,
+
+  primaryImageOfPage: {
+    "@type": "ImageObject",
+    url: CARNAVAL_IMAGE,
+    contentUrl: CARNAVAL_IMAGE,
+    width: 713,
+    height: 960,
+    caption: "Moulin Rouge 2027 - Comparsa Los Lingotes",
+  },
+});
 ---
 
 <!doctype html>
@@ -39,257 +68,220 @@ const jsonLd = JSON.stringify({
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Comparsa Los Lingotes | Talavera la Real</title>
+    <!-- Título -->
+    <title>Comparsa Los Lingotes | Moulin Rouge 2027</title>
+
+    <!-- Descripción SEO -->
     <meta
       name="description"
-      content="Comparsa de Carnaval Los Lingotes de Talavera la Real. Actuaciones, historia y carnaval."
+      content="Comparsa Los Lingotes de Talavera la Real. Descubre nuestro Carnaval 2027 inspirado en el Moulin Rouge, nuestra galería y nuestra historia."
     />
 
+    <!-- URL canónica -->
     <link rel="canonical" href={`${SITE_URL}/`} />
 
+    <!-- Iconos -->
     <link rel="icon" href="/favicon.ico" sizes="any" />
+
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="theme-color" content="#120609" />
 
-    <!-- Open Graph -->
+    <!-- Open Graph: imagen institucional -->
     <meta property="og:type" content="website" />
+
     <meta property="og:site_name" content="Comparsa Los Lingotes" />
+
     <meta
       property="og:title"
-      content="Comparsa Los Lingotes | Talavera la Real"
+      content="Comparsa Los Lingotes | Moulin Rouge 2027"
     />
+
     <meta
       property="og:description"
-      content="Comparsa de Carnaval Los Lingotes de Talavera la Real. Actuaciones, galería y vídeos."
+      content="Los Lingotes presentan su Carnaval 2027 inspirado en el universo del Moulin Rouge y la Belle Époque."
     />
+
     <meta property="og:url" content={`${SITE_URL}/`} />
+
     <meta property="og:image" content={OG_IMAGE} />
+
     <meta property="og:image:secure_url" content={OG_IMAGE} />
+
     <meta property="og:image:type" content="image/jpeg" />
+
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Logo Los Lingotes" />
+
+    <meta
+      property="og:image:alt"
+      content="Imagen institucional de la Comparsa Los Lingotes"
+    />
+
     <meta property="og:locale" content="es_ES" />
 
-    <!-- Twitter -->
+    <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
+
     <meta
       name="twitter:title"
-      content="Comparsa Los Lingotes | Talavera la Real"
+      content="Comparsa Los Lingotes | Moulin Rouge 2027"
     />
+
     <meta
       name="twitter:description"
-      content="Comparsa de Carnaval Los Lingotes de Talavera la Real. Actuaciones, galería y vídeos."
+      content="Descubre el Carnaval 2027 de la Comparsa Los Lingotes, inspirado en el Moulin Rouge."
     />
+
     <meta name="twitter:image" content={OG_IMAGE} />
 
-    <!-- SEO local: datos estructurados -->
+    <!-- Datos estructurados de la comparsa -->
     <script type="application/ld+json" is:inline set:html={jsonLd} />
-    <!-- cpomprrobación del busacador Bing -->
+
+    <!-- Datos estructurados de la portada -->
+    <script type="application/ld+json" is:inline set:html={webPageJsonLd} />
+
+    <!-- Verificación Bing -->
     <meta name="msvalidate.01" content="2B7261B181FB3A3472FF5A58A9D5AB6D" />
 
-    <meta name="robots" content="index,follow" />
+    <!-- Indexación y vistas previas de imágenes -->
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+
     <meta name="referrer" content="strict-origin-when-cross-origin" />
 
-    <!-- Tema: evita flash -->
+    <!-- Modo oscuro por defecto en cada carga -->
     <script is:inline>
       (() => {
-        const stored = localStorage.getItem("theme");
-        const prefersDark = window.matchMedia(
-          "(prefers-color-scheme: dark)",
-        ).matches;
-        const theme = stored ?? (prefersDark ? "dark" : "light");
-        document.documentElement.classList.toggle("dark", theme === "dark");
+        document.documentElement.classList.add("dark");
+        localStorage.setItem("theme", "dark");
       })();
     </script>
   </head>
 
-  <body class="bg-amber-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
+  <body
+    class="bg-[#f5e9d7] text-[#542a2b] transition-colors duration-500 dark:bg-[#120609] dark:text-[#f5dfb5]"
+  >
+    <!-- CABECERA -->
     <Header />
+
+    <!-- PORTADA ANIMADA MOULIN ROUGE -->
     <Hero />
 
-    <!-- Carnaval (SEO + contenido visible) -->
-    <section id="carnaval" class="mx-auto max-w-5xl px-4 py-16">
-      <!-- MOULIN ROUGE 2027 -->
-      <section
-        id="carnaval"
-        class="relative overflow-hidden bg-[#120609] px-5 py-20 text-[#f5dfb5] sm:py-28"
+    <!-- PRESENTACIÓN CARNAVAL 2027 -->
+    <section
+      id="carnaval"
+      class="relative overflow-hidden bg-[#f5e9d7] px-5 py-20 text-[#542a2b] transition-colors duration-500 dark:bg-[#120609] dark:text-[#f5dfb5] sm:py-28"
+    >
+      <!-- Iluminación ambiental -->
+      <div
+        class="pointer-events-none absolute left-1/2 top-0 h-80 w-full -translate-x-1/2 bg-[#c69b55]/15 blur-[100px] dark:bg-[#8b1725]/25"
+        aria-hidden="true"
       >
-        <!-- Iluminación ambiental -->
-        <div
-          class="pointer-events-none absolute left-1/2 top-0 h-80 w-full -translate-x-1/2 bg-[#8b1725]/25 blur-[100px]"
-          aria-hidden="true"
-        >
-        </div>
-
-        <div class="relative mx-auto max-w-5xl text-center">
-          <!-- Introducción -->
-          <p
-            class="mb-5 text-xs font-semibold uppercase tracking-[0.35em] text-[#d6ad67] sm:text-sm"
-          >
-            Comparsa Los Lingotes · Carnaval 2027
-          </p>
-
-          <!-- Título -->
-          <h2
-            class="mx-auto max-w-4xl text-4xl font-bold leading-tight text-[#f3d69b] sm:text-6xl"
-            style="font-family: var(--font-display);"
-          >
-            Bienvenidos al espectáculo
-          </h2>
-
-          <!-- Separador -->
-          <div class="mx-auto my-9 flex max-w-xs items-center gap-5">
-            <span class="h-px flex-1 bg-[#c69b55]/60"></span>
-
-            <span class="text-3xl text-[#d6ad67]">✦</span>
-
-            <span class="h-px flex-1 bg-[#c69b55]/60"></span>
-          </div>
-
-          <!-- Presentación -->
-          <p
-            class="mx-auto max-w-3xl text-lg leading-relaxed text-[#ead6bd] sm:text-xl"
-          >
-            Las luces vuelven a encenderse, el telón comienza a abrirse y la
-            magia del carnaval nos invita a vivir una nueva historia.
-          </p>
-
-          <p
-            class="mx-auto mt-7 max-w-3xl text-base leading-relaxed text-[#cdb8a3] sm:text-lg"
-          >
-            En 2027, la Comparsa Los Lingotes se inspira en el universo del <strong
-              class="text-[#f3d69b]">Moulin Rouge</strong
-            >, trasladándonos al París de la Belle Époque: una época de música,
-            arte, cabaret y noches inolvidables.
-          </p>
-
-          <p
-            class="mx-auto mt-7 max-w-3xl text-base leading-relaxed text-[#cdb8a3] sm:text-lg"
-          >
-            Desde Talavera la Real, seguimos viviendo el carnaval con la
-            ilusión, la pasión y el espíritu que nos acompañan en cada edición.
-          </p>
-
-          <!-- Destacado -->
-          <div
-            class="mx-auto mt-14 max-w-2xl border-y border-[#c69b55]/40 px-5 py-8"
-          >
-            <p
-              class="text-xl font-semibold italic leading-relaxed text-[#f3d69b] sm:text-2xl"
-              style="font-family: var(--font-display);"
-            >
-              «Que se enciendan las luces, que comience el espectáculo».
-            </p>
-          </div>
-
-          <!-- Botones -->
-          <div
-            class="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row"
-          >
-            <a
-              href="#moulin-rouge"
-              class="inline-flex min-h-12 w-full items-center justify-center rounded-full border border-[#d6ad67] bg-[#b88a42] px-8 py-3 text-sm font-bold uppercase tracking-wider text-[#160508] transition-colors hover:bg-[#f1ce86] sm:w-auto"
-            >
-              Descubre el Moulin Rouge
-            </a>
-
-            <a
-              href="/historia/"
-              class="inline-flex min-h-12 w-full items-center justify-center rounded-full border border-[#d6ad67]/60 px-8 py-3 text-sm font-semibold uppercase tracking-wider text-[#f3d69b] transition-colors hover:bg-[#d6ad67]/10 sm:w-auto"
-            >
-              Nuestra historia
-            </a>
-          </div>
-
-          <!-- Pie decorativo -->
-          <p class="mt-16 text-xs uppercase tracking-[0.3em] text-[#c69b55]/80">
-            ✦ Talavera la Real · Badajoz ✦
-          </p>
-        </div>
-      </section>
-
-      <!-- Header SOLO con texto (nada de divs ni componentes dentro del h2) 
-      <header class="mx-auto max-w-2xl">
-        <h2
-          class="text-center text-2xl font-bold sm:text-3xl"
-          style="font-family: var(--font-display);"
-        >
-          <span
-            class="mx-auto mb-3 flex w-fit items-center justify-center gap-2 rounded-2xl bg-white/60 px-3 py-1 text-sm text-zinc-700 ring-1 ring-black/10 dark:bg-white/5 dark:text-zinc-200 dark:ring-white/10"
-          >
-            <SparkleIcon class="h-4 w-4 text-amber-600 dark:text-amber-300" />
-            Carnaval &amp; Comparsa Los Lingotes
-            <TrophyIcon class="h-4 w-4 text-amber-600 dark:text-amber-300" />
-          </span>
-
-          Comparsa Los Lingotes. Carnaval de Talavera la Real y Badajoz
-        </h2>
-      </header>
-
-       3D fuera del h2 -->
-      <div class="mt-10">
-        <CartelesMoulinRouge />
       </div>
 
-      <!-- Tarjetas -->
-      <div class="mt-10 grid gap-6 sm:grid-cols-2">
-        <div
-          class="rounded-2xl border border-black/10 bg-white/70 p-5 shadow-sm dark:border-white/10 dark:bg-white/5"
+      <div class="relative mx-auto max-w-5xl text-center">
+        <!-- Introducción -->
+        <p
+          class="mb-5 text-xs font-semibold uppercase tracking-[0.35em] text-[#955d31] dark:text-[#d6ad67] sm:text-sm"
         >
-          <div class="flex items-start gap-3">
-            <span
-              class="grid h-10 w-10 place-items-center rounded-xl bg-amber-500/10 text-amber-700 dark:text-amber-300"
-              aria-hidden="true"
-            >
-            </span>
-            <p class="text-base text-zinc-700 dark:text-zinc-300 sm:text-lg">
-              Con una trayectoria marcada por la música, el baile y la puesta en
-              escena, Los Lingotes se ha consolidado como una de las comparsas
-              más representativas del carnaval en la provincia de Badajoz.
-            </p>
-          </div>
+          Comparsa Los Lingotes · Carnaval 2027
+        </p>
+
+        <!-- Título -->
+        <h1
+          class="mx-auto max-w-4xl text-4xl font-bold leading-tight text-[#722538] dark:text-[#f3d69b] sm:text-6xl"
+          style="font-family: var(--font-display);"
+        >
+          Bienvenidos al espectáculo
+        </h1>
+
+        <!-- Separador decorativo -->
+        <div class="mx-auto my-9 flex max-w-xs items-center gap-5">
+          <span class="h-px flex-1 bg-[#a67544]/60 dark:bg-[#c69b55]/60"></span>
+
+          <span class="text-3xl text-[#955d31] dark:text-[#d6ad67]"> ✦ </span>
+
+          <span class="h-px flex-1 bg-[#a67544]/60 dark:bg-[#c69b55]/60"></span>
         </div>
 
-        <div
-          class="rounded-2xl border border-black/10 bg-white/70 p-5 shadow-sm dark:border-white/10 dark:bg-white/5"
+        <!-- Presentación -->
+        <p
+          class="mx-auto max-w-3xl text-lg leading-relaxed text-[#67453b] dark:text-[#ead6bd] sm:text-xl"
         >
-          <div class="flex items-start gap-3">
-            <span
-              class="grid h-10 w-10 place-items-center rounded-xl bg-amber-500/10 text-amber-700 dark:text-amber-300"
-              aria-hidden="true"
-            >
-            </span>
+          Las luces vuelven a encenderse, el telón comienza a abrirse y la magia
+          del carnaval nos invita a vivir una nueva historia.
+        </p>
 
-            <div class="text-base text-zinc-700 dark:text-zinc-300 sm:text-lg">
-              <p>
-                Cada edición del carnaval es una oportunidad para conectar con
-                el público, llevar el espectáculo a las calles y mantener viva
-                la tradición carnavalera en
-                <strong> Talavera la Real</strong>.
-              </p>
+        <p
+          class="mx-auto mt-7 max-w-3xl text-base leading-relaxed text-[#67453b] dark:text-[#cdb8a3] sm:text-lg"
+        >
+          En 2027, la Comparsa Los Lingotes se inspira en el universo del
+          <strong class="text-[#722538] dark:text-[#f3d69b]">
+            Moulin Rouge
+          </strong>, trasladándonos al París de la Belle Époque: una época de
+          música, arte, cabaret y noches inolvidables.
+        </p>
 
-              <a
-                href="/historia/"
-                title="Historia de la comparsa Los Lingotes"
-                class="mt-3 inline-flex items-center gap-2 rounded-xl border border-black/10 bg-white px-3 py-2 text-sm font-medium text-zinc-900 shadow-sm hover:bg-black/5 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
-              >
-                <span aria-hidden="true">📜</span>
-                Conoce nuestra historia
-                <span aria-hidden="true">→</span>
-              </a>
-            </div>
-          </div>
+        <p
+          class="mx-auto mt-7 max-w-3xl text-base leading-relaxed text-[#67453b] dark:text-[#cdb8a3] sm:text-lg"
+        >
+          Desde Talavera la Real, seguimos viviendo el carnaval con la ilusión,
+          la pasión y el espíritu que nos acompañan en cada edición.
+        </p>
+
+        <!-- Frase destacada -->
+        <div
+          class="mx-auto mt-14 max-w-2xl border-y border-[#a67544]/40 px-5 py-8 dark:border-[#c69b55]/40"
+        >
+          <p
+            class="text-xl font-semibold italic leading-relaxed text-[#722538] dark:text-[#f3d69b] sm:text-2xl"
+            style="font-family: var(--font-display);"
+          >
+            «Que se enciendan las luces, que comience el espectáculo».
+          </p>
         </div>
+
+        <!-- Navegación -->
+        <div
+          class="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row"
+        >
+          <!-- Botón Moulin Rouge -->
+          <a
+            href="#moulin-rouge"
+            class="inline-flex min-h-12 w-full items-center justify-center rounded-full border border-[#955d31] bg-[#722538] px-8 py-3 text-sm font-bold uppercase tracking-wider text-[#fff3df] transition-colors hover:bg-[#91354a] dark:border-[#d6ad67] dark:bg-[#b88a42] dark:text-[#160508] dark:hover:bg-[#f1ce86] sm:w-auto"
+          >
+            Descubre el Moulin Rouge
+          </a>
+
+          <!-- Botón Historia -->
+          <a
+            href="/historia/"
+            class="inline-flex min-h-12 w-full items-center justify-center rounded-full border border-[#955d31]/60 px-8 py-3 text-sm font-semibold uppercase tracking-wider text-[#722538] transition-colors hover:bg-[#722538]/10 dark:border-[#d6ad67]/60 dark:text-[#f3d69b] dark:hover:bg-[#d6ad67]/10 sm:w-auto"
+          >
+            Nuestra historia
+          </a>
+        </div>
+
+        <!-- Pie decorativo -->
+        <p
+          class="mt-16 text-xs uppercase tracking-[0.3em] text-[#955d31] dark:text-[#c69b55]"
+        >
+          ✦ Talavera la Real · Badajoz ✦
+        </p>
       </div>
     </section>
 
-    <!-- Secciones fuera del header (estructura correcta) -->
+    <!-- CUATRO CARTELES MOULIN ROUGE -->
+    <CartelesMoulinRouge />
 
+    <!-- GALERÍA DE CARNAVALES ANTERIORES -->
     <SectionGaleria />
+
+    <!-- REDES SOCIALES Y PIE DE PÁGINA -->
     <Footer />
   </body>
 </html>

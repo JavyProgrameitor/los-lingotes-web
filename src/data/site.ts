@@ -3,7 +3,7 @@ export const site = {
   city: "Talavera la Real",
   logo: "/og.jpg",
   tagline: "ESENCIA CARNAVAL...",
-  heroImage: "/esencia26.jpg",
+  heroImage: "/moulin-rouge-2027.png",
   instagram: "https://www.instagram.com/comparsalingotes/",
   email: "contacto@loslingotes.es",
 };

@@ -4,35 +4,81 @@ import { galeria } from "../data/galeria";
 const FALLBACK_ALT = "Comparsa Los Lingotes en el Carnaval de Talavera la Real";
 ---
 
-<section id="galeria" class="mx-auto max-w-5xl px-4 py-12">
-  <h2 class="text-center text-2xl font-semibold" style="font-family: var(--font-display);">
-    Galería
-  </h2>
+<section
+  id="galeria"
+  class="relative overflow-hidden bg-[#f5e9d7] px-4 py-20 text-[#542a2b] transition-colors duration-500 dark:bg-[#1c090e] dark:text-[#f5dfb5] sm:py-28"
+>
+  <!-- Iluminación ambiental -->
+  <div
+    class="pointer-events-none absolute left-1/2 top-0 h-80 w-full -translate-x-1/2 bg-[#c69b55]/15 blur-[100px] dark:bg-[#8b1725]/20"
+    aria-hidden="true"
+  >
+  </div>
 
-  <div class="mt-6 -mx-4 px-4 md:mx-0 md:px-0">
-    <div
-      class="flex gap-4 overflow-x-auto pb-2 snap-x snap-mandatory md:grid md:grid-cols-3 md:overflow-visible"
-    >
-      {
-        galeria.map((img) => {
-          const alt = (img.alt || "").trim() || FALLBACK_ALT;
+  <div class="relative mx-auto max-w-6xl">
+    <!-- Encabezado -->
+    <header class="mb-12 text-center">
+      <p
+        class="mb-4 text-xs uppercase tracking-[0.35em] text-[#955d31] dark:text-[#c69b55]"
+      >
+        Nuestros recuerdos
+      </p>
 
-          return (
-            <figure class="min-w-[80%] snap-center md:min-w-0">
-              <img
-                src={img.src}
-                alt={alt}
-                class="h-64 w-full rounded-2xl object-cover ring-1 ring-black/10 dark:ring-white/10"
-                loading="lazy"
-                decoding="async"
-              />
-              <figcaption class="text-center mt-2 text-xs text-zinc-600 dark:text-zinc-400">
-                {alt}
-              </figcaption>
-            </figure>
-          );
-        })
-      }
+      <h2
+        class="text-3xl font-bold text-[#722538] dark:text-[#f3d69b] sm:text-5xl"
+        style="font-family: var(--font-display);"
+      >
+        Galería de Los Lingotes
+      </h2>
+
+      <!-- Separador decorativo -->
+      <div class="mx-auto my-7 flex max-w-xs items-center gap-4">
+        <span class="h-px flex-1 bg-[#a67544]/60 dark:bg-[#c69b55]/60"></span>
+
+        <span class="text-2xl text-[#955d31] dark:text-[#d6ad67]"> ✦ </span>
+
+        <span class="h-px flex-1 bg-[#a67544]/60 dark:bg-[#c69b55]/60"></span>
+      </div>
+
+      <p
+        class="mx-auto max-w-2xl text-sm leading-relaxed text-[#67453b] dark:text-[#dfc9b1] sm:text-lg"
+      >
+        Momentos que forman parte de nuestra historia. Disfraces, actuaciones y
+        recuerdos de anteriores carnavales.
+      </p>
+    </header>
+
+    <!-- Galería de imágenes -->
+    <div class="-mx-4 px-4 md:mx-0 md:px-0">
+      <div
+        class="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-6 md:grid md:grid-cols-3 md:overflow-visible"
+      >
+        {
+          galeria.map((img) => {
+            const alt = (img.alt || "").trim() || FALLBACK_ALT;
+
+            return (
+              <figure class="min-w-[80%] snap-center sm:min-w-[55%] md:min-w-0">
+                {/* Marco de la fotografía */}
+                <div class="overflow-hidden rounded-xl border border-[#a67544]/50 bg-[#e2c9a9] p-1.5 shadow-lg transition-colors duration-500 dark:border-[#c69b55]/40 dark:bg-[#281217] dark:shadow-xl">
+                  <img
+                    src={img.src}
+                    alt={alt}
+                    class="h-64 w-full rounded-lg object-cover transition-transform duration-500 hover:scale-105"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+
+                {/* Descripción */}
+                <figcaption class="mt-4 text-center text-xs leading-relaxed text-[#67453b] dark:text-[#d6c0a6]">
+                  {alt}
+                </figcaption>
+              </figure>
+            );
+          })
+        }
+      </div>
     </div>
   </div>
 </section>
